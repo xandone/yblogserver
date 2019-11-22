@@ -1,0 +1,14 @@
+## joke表
+create table y_article(
+id int(11) unsigned not null auto_increment,
+art_id varchar(18) not null,
+art_user_id varchar(18) not null,
+title varchar(255) not null,
+art_comment_count int(5) DEFAULT '0',
+type int(2) DEFAULT DEFAULT '0',
+cover_img varchar(255) DEFAULT NULL,
+post_time datetime DEFAULT NULL,
+content mediumtext,
+contentHtml mediumtext,
+primary key (id)
+)ENGINE=InnoDB DEFAULT CHARSET=UTF8;
