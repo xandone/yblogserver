@@ -62,4 +62,29 @@ public class ArticleServiceImpl implements ArticleService {
         base.setTotal(total);
         return base;
     }
+
+    @Override
+    public ArticleBean getArtById(String artId) throws Exception {
+        ArticleBean jokeBean = articleMapper.getArtBeanById(artId);
+//        dealJokeBean(jokeBean);
+        return jokeBean;
+    }
+
+//    private JokeBean dealJokeBean(JokeBean bean) throws Exception {
+//        UserBean user = userMapper.getUserById(bean.getJokeUserId());
+//        List<JokeLikeBean> likeBeans = selectJokeLikeById(bean.getJokeId());
+//        List<CommentBean> commentBeans = jokeMapper.getJokeCommentById(bean.getJokeId());
+//        if (user != null) {
+//            bean.setJokeUserNick(user.getNickname());
+//            bean.setJokeUserIcon(user.getUserIcon());
+//        }
+//        if (likeBeans != null) {
+//            bean.setArticleLikeCount(likeBeans.size());
+//        }
+//        if (commentBeans != null) {
+//            bean.setArticleCommentCount(commentBeans.size());
+//        }
+//        return bean;
+//    }
+
 }

@@ -13,4 +13,6 @@ public interface ArticleMapper {
     List<ArticleBean> getArticleList();
 
     void addArticle(ArticleBean articleBean);
+
+    ArticleBean getArtBeanById(String artId);
 }

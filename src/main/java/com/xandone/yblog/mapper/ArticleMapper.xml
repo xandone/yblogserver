@@ -45,4 +45,10 @@
         id desc
     </select>
 
+    <select id="getArtBeanById" resultMap="BaseResultMap">
+        select * from
+        y_article
+        where art_id = #{artId}
+    </select>
+
 </mapper>

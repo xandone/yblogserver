@@ -68,4 +68,25 @@ public class ArticleController {
         return baseResult;
     }
 
+
+    @RequestMapping(value = "/artDetails")
+    @ResponseBody
+    public BaseResult deleteJokeByList(@RequestParam(value = "jokeId") String jokeId) {
+        BaseResult baseResult = new BaseResult();
+        try {
+            ArticleBean jokeBean = articleService.getArtById(jokeId);
+            List<ArticleBean> list = new ArrayList<>();
+            list.add(jokeBean);
+            baseResult.setData(list);
+            baseResult.setCode(ReturnCode.SUCCESS);
+            baseResult.setMsg(ReturnCode.MES_REQUEST_SUCCESS);
+            return baseResult;
+        } catch (Exception e) {
+            e.printStackTrace();
+            baseResult.setCode(ReturnCode.ERROR_CODE);
+            baseResult.setMsg(ReturnCode.MES_SERVER_ERROR);
+        }
+        return baseResult;
+    }
+
 }
