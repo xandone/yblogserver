@@ -65,9 +65,9 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public ArticleBean getArtById(String artId) throws Exception {
-        ArticleBean jokeBean = articleMapper.getArtBeanById(artId);
-//        dealJokeBean(jokeBean);
-        return jokeBean;
+        ArticleBean articleBean = articleMapper.getArtBeanById(artId);
+//        dealJokeBean(articleBean);
+        return articleBean;
     }
 
 //    private JokeBean dealJokeBean(JokeBean bean) throws Exception {

@@ -71,7 +71,7 @@ public class ArticleController {
 
     @RequestMapping(value = "/artDetails")
     @ResponseBody
-    public BaseResult deleteJokeByList(@RequestParam(value = "jokeId") String jokeId) {
+    public BaseResult deleteJokeByList(@RequestParam(value = "artId") String jokeId) {
         BaseResult baseResult = new BaseResult();
         try {
             ArticleBean jokeBean = articleService.getArtById(jokeId);

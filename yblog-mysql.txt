@@ -12,3 +12,16 @@ content mediumtext,
 contentHtml mediumtext,
 primary key (id)
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+## 首页轮播
+create table y_banner(
+id int(11) unsigned not null auto_increment,
+user_id varchar(18) not null,
+articel_id varchar(18) not null,
+title varchar(255),
+img_url varchar(255),
+article_url varchar(255),
+pageViews int(6),
+up_time datetime DEFAULT NULL,
+primary key (id)
+)ENGINE=InnoDB DEFAULT CHARSET=UTF8;
