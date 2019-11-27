@@ -199,6 +199,12 @@
             <artifactId>cors-filter</artifactId>
             <version>${cors.version}</version>
         </dependency>
+        <!-- 七牛云存储 -->
+        <dependency>
+            <groupId>com.qiniu</groupId>
+            <artifactId>qiniu-java-sdk</artifactId>
+            <version>7.0.9</version>
+        </dependency>
     </dependencies>
 
     <build>
