@@ -1,4 +1,4 @@
-## joke表
+## article表
 create table y_article(
 id int(11) unsigned not null auto_increment,
 art_id varchar(18) not null,
@@ -23,5 +23,20 @@ img_url varchar(255),
 article_url varchar(255),
 pageViews int(6),
 up_time datetime DEFAULT NULL,
+primary key (id)
+)ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+## essay表
+create table y_essay(
+id int(11) unsigned not null auto_increment,
+essay_id varchar(18) not null,
+essay_user_id varchar(18) not null,
+title varchar(255) not null,
+essay_comment_count int(5) DEFAULT '0',
+type int(2) DEFAULT '0',
+imglist mediumtext DEFAULT NULL,
+post_time datetime DEFAULT NULL,
+content mediumtext,
+contentHtml mediumtext,
 primary key (id)
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;
