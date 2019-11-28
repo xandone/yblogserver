@@ -35,6 +35,7 @@ public class ArticleServiceImpl implements ArticleService {
         articleBean.setContentHtml((String) map.get("contentHtml"));
         articleBean.setPostTime(new Date());
         articleBean.setArtCommentCount(0);
+        articleBean.setArtBrowseCount(0);
         articleBean.setType((Integer) map.get("type"));
         articleBean.setCoverImg((String) map.get("coverImg"));
         articleMapper.addArticle(articleBean);

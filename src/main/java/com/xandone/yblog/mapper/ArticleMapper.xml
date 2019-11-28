@@ -8,6 +8,7 @@
         <result column="art_user_id" property="artUserId" jdbcType="VARCHAR"/>
         <result column="title" property="title" jdbcType="VARCHAR"/>
         <result column="art_comment_count" property="artCommentCount" jdbcType="INTEGER"/>
+        <result column="art_browse_count" property="artBrowseCount" jdbcType="INTEGER"/>
         <result column="type" property="type" jdbcType="INTEGER"/>
         <result column="cover_img" property="coverImg" jdbcType="VARCHAR"/>
         <result column="post_time" property="postTime" jdbcType="TIMESTAMP"/>
@@ -21,6 +22,7 @@
         art_user_id,
         title,
         art_comment_count,
+        art_browse_count,
         type,
         cover_img,
         post_time,
@@ -31,6 +33,7 @@
         #{artUserId},
         #{title},
         #{artCommentCount},
+        #{artBrowseCount},
         #{type},
         #{coverImg},
         #{postTime},

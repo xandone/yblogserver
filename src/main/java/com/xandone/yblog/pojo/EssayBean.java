@@ -14,6 +14,7 @@ public class EssayBean {
     private String essayUserId;
     private String title;
     private int essayCommentCount;
+    private int essayBrowseCount;
     private int type;
     private String coverImg;
     private Date postTime;
@@ -94,5 +95,11 @@ public class EssayBean {
         this.contentHtml = contentHtml;
     }
 
+    public int getEssayBrowseCount() {
+        return essayBrowseCount;
+    }
 
+    public void setEssayBrowseCount(int essayBrowseCount) {
+        this.essayBrowseCount = essayBrowseCount;
+    }
 }

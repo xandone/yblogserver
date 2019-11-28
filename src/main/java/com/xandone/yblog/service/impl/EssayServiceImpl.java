@@ -28,13 +28,13 @@ public class EssayServiceImpl implements EssayService {
     public EssayBean addEssay(Map<String, Object> map) throws Exception {
         EssayBean essayBean = new EssayBean();
 
-        essayBean.setArtId(IDUtils.RandomId());
-        essayBean.setArtUserId((String) map.get("artUserId"));
+        essayBean.setEssayId(IDUtils.RandomId());
+        essayBean.setEssayUserId((String) map.get("artUserId"));
         essayBean.setTitle((String) map.get("title"));
         essayBean.setContent((String) map.get("content"));
         essayBean.setContentHtml((String) map.get("contentHtml"));
         essayBean.setPostTime(new Date());
-        essayBean.setArtCommentCount(0);
+        essayBean.setEssayCommentCount(0);
         essayBean.setType((Integer) map.get("type"));
         essayBean.setCoverImg((String) map.get("coverImg"));
         essayMapper.addEssay(essayBean);

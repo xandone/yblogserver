@@ -4,10 +4,11 @@
         "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xandone.yblog.mapper.EssayMapper">
     <resultMap id="BaseResultMap" type="com.xandone.yblog.pojo.EssayBean">
-        <result column="art_id" property="artId" jdbcType="VARCHAR"/>
-        <result column="art_user_id" property="artUserId" jdbcType="VARCHAR"/>
+        <result column="essay_id" property="essayId" jdbcType="VARCHAR"/>
+        <result column="art_user_id" property="essayUserId" jdbcType="VARCHAR"/>
         <result column="title" property="title" jdbcType="VARCHAR"/>
-        <result column="art_comment_count" property="artCommentCount" jdbcType="INTEGER"/>
+        <result column="essay_comment_count" property="essayCommentCount" jdbcType="INTEGER"/>
+        <result column="essay_browse_count" property="essayBrowseCount" jdbcType="INTEGER"/>
         <result column="type" property="type" jdbcType="INTEGER"/>
         <result column="imglist" property="imglist" jdbcType="VARCHAR"/>
         <result column="post_time" property="postTime" jdbcType="TIMESTAMP"/>
@@ -21,6 +22,7 @@
         essay_user_id,
         title,
         essay_comment_count,
+        essay_browse_count,
         type,
         imglist,
         post_time,
@@ -31,6 +33,7 @@
         #{essayUserId},
         #{title},
         #{essayCommentCount},
+        #{essayBrowseCount},
         #{type},
         #{imglist},
         #{postTime},

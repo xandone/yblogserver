@@ -26,7 +26,7 @@ public class ArticleController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
-    public BaseResult addJoke(@RequestBody Map<String, Object> map) {
+    public BaseResult addArt(@RequestBody Map<String, Object> map) {
         BaseResult baseResult = new BaseResult();
         try {
             ArticleBean articleBean = articleService.addArticle(map);
@@ -48,7 +48,7 @@ public class ArticleController {
 
     @RequestMapping(value = "/artlist")
     @ResponseBody
-    public BaseListResult getAllJoke(@RequestParam(value = "page") Integer page,
+    public BaseListResult getAllArt(@RequestParam(value = "page") Integer page,
                                      @RequestParam(value = "row") Integer row,
                                      Integer tag) {
         BaseListResult baseResult = new BaseListResult();
@@ -71,7 +71,7 @@ public class ArticleController {
 
     @RequestMapping(value = "/artDetails")
     @ResponseBody
-    public BaseResult deleteJokeByList(@RequestParam(value = "artId") String jokeId) {
+    public BaseResult getArtDetailsById(@RequestParam(value = "artId") String jokeId) {
         BaseResult baseResult = new BaseResult();
         try {
             ArticleBean jokeBean = articleService.getArtById(jokeId);

@@ -14,6 +14,7 @@ public class ArticleBean {
     private String artUserId;
     private String title;
     private int artCommentCount;
+    private int artBrowseCount;
     private int type;
     private String coverImg;
     private Date postTime;
@@ -93,6 +94,11 @@ public class ArticleBean {
         this.contentHtml = contentHtml;
     }
 
+    public int getArtBrowseCount() {
+        return artBrowseCount;
+    }
 
-
+    public void setArtBrowseCount(int artBrowseCount) {
+        this.artBrowseCount = artBrowseCount;
+    }
 }

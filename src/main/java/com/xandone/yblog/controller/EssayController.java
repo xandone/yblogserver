@@ -4,7 +4,8 @@ import com.xandone.yblog.common.BaseListResult;
 import com.xandone.yblog.common.BaseResult;
 import com.xandone.yblog.common.ReturnCode;
 import com.xandone.yblog.pojo.ArticleBean;
-import com.xandone.yblog.service.ArticleService;
+import com.xandone.yblog.pojo.EssayBean;
+import com.xandone.yblog.service.EssayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -19,19 +20,19 @@ import java.util.Map;
  * description：
  */
 @Controller
-@RequestMapping("/art")
+@RequestMapping("/essay")
 public class EssayController {
     @Autowired
-    ArticleService articleService;
+    EssayService essayService;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
-    public BaseResult addJoke(@RequestBody Map<String, Object> map) {
+    public BaseResult addEssay(@RequestBody Map<String, Object> map) {
         BaseResult baseResult = new BaseResult();
         try {
-            ArticleBean articleBean = articleService.addArticle(map);
-            List<ArticleBean> list = new ArrayList<>();
-            list.add(articleBean);
+            EssayBean essayBean = essayService.addEssay(map);
+            List<EssayBean> list = new ArrayList<>();
+            list.add(essayBean);
             baseResult.setData(list);
             baseResult.setCode(ReturnCode.SUCCESS);
 
@@ -46,14 +47,14 @@ public class EssayController {
     }
 
 
-    @RequestMapping(value = "/artlist")
+    @RequestMapping(value = "/essaylist")
     @ResponseBody
     public BaseListResult getAllJoke(@RequestParam(value = "page") Integer page,
                                      @RequestParam(value = "row") Integer row,
                                      Integer tag) {
         BaseListResult baseResult = new BaseListResult();
         try {
-            BaseListResult result = articleService.getArticleList(page, row, tag);
+            BaseListResult result = essayService.getEssayList(page, row, tag);
             if (result != null) {
                 result.setCode(ReturnCode.SUCCESS);
                 result.setMsg(ReturnCode.MES_REQUEST_SUCCESS);
@@ -69,14 +70,14 @@ public class EssayController {
     }
 
 
-    @RequestMapping(value = "/artDetails")
+    @RequestMapping(value = "/essayDetails")
     @ResponseBody
-    public BaseResult deleteJokeByList(@RequestParam(value = "artId") String jokeId) {
+    public BaseResult getEssayDetailsById(@RequestParam(value = "essayId") String essayId) {
         BaseResult baseResult = new BaseResult();
         try {
-            ArticleBean jokeBean = articleService.getArtById(jokeId);
-            List<ArticleBean> list = new ArrayList<>();
-            list.add(jokeBean);
+            EssayBean essayBean = essayService.getEssayById(essayId);
+            List<EssayBean> list = new ArrayList<>();
+            list.add(essayBean);
             baseResult.setData(list);
             baseResult.setCode(ReturnCode.SUCCESS);
             baseResult.setMsg(ReturnCode.MES_REQUEST_SUCCESS);
