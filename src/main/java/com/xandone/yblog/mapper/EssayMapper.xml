@@ -10,7 +10,7 @@
         <result column="essay_comment_count" property="essayCommentCount" jdbcType="INTEGER"/>
         <result column="essay_browse_count" property="essayBrowseCount" jdbcType="INTEGER"/>
         <result column="type" property="type" jdbcType="INTEGER"/>
-        <result column="imglist" property="imglist" jdbcType="VARCHAR"/>
+        <result column="imglist" property="coverImg" jdbcType="VARCHAR"/>
         <result column="post_time" property="postTime" jdbcType="TIMESTAMP"/>
         <result column="content" property="content" jdbcType="VARCHAR"/>
         <result column="contentHtml" property="contentHtml" jdbcType="VARCHAR"/>
@@ -35,7 +35,7 @@
         #{essayCommentCount},
         #{essayBrowseCount},
         #{type},
-        #{imglist},
+        #{coverImg},
         #{postTime},
         #{content},
         #{contentHtml}

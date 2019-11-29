@@ -14,7 +14,7 @@ contentHtml mediumtext,
 primary key (id)
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
-## 首页轮播
+## banner
 create table y_banner(
 id int(11) unsigned not null auto_increment,
 user_id varchar(18) not null,
@@ -40,5 +40,16 @@ imglist mediumtext DEFAULT NULL,
 post_time datetime DEFAULT NULL,
 content mediumtext,
 contentHtml mediumtext,
+primary key (id)
+)ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+## art评论表
+create table y_art_comment(
+id int(11) unsigned not null auto_increment,
+comment_id varchar(18) not null,
+art_id varchar(18),
+comment_user_id varchar(18),
+comment_details mediumtext,
+comment_date datetime DEFAULT NULL,
 primary key (id)
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;

@@ -1,7 +1,9 @@
 import com.xandone.yblog.mapper.ArticleMapper;
 import com.xandone.yblog.mapper.BannerMapper;
+import com.xandone.yblog.mapper.CommentMapper;
 import com.xandone.yblog.pojo.ArticleBean;
 import com.xandone.yblog.pojo.BannerBean;
+import com.xandone.yblog.pojo.CommentBean;
 import com.xandone.yblog.utils.IDUtils;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -34,7 +36,7 @@ public class AdminTest {
             BannerBean bannerBean = new BannerBean();
             bannerBean.setUserId("250");
             bannerBean.setArticelId(IDUtils.RandomId());
-            bannerBean.setImgUrl("https://upload-images.jianshu.io/upload_images/2518499-3d5a6ec6bc7f7efd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240");
+            bannerBean.setImgUrl("http://q1kdflm5d.bkt.clouddn.com/Fli_OgeVZBvI8AYpWCh6hbjHXBkE");
             bannerBean.setTitle("长河落日圆");
             bannerBean.setPageViews(0);
             bannerBean.setUpTime(new Date());
@@ -43,5 +45,20 @@ public class AdminTest {
             e.printStackTrace();
         }
 
+    }
+
+    @Test
+    public void addComment() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
+        CommentMapper mapper = context.getBean(CommentMapper.class);
+
+        CommentBean commentBean = new CommentBean();
+        commentBean.setCommentId(IDUtils.RandomId());
+        commentBean.setArtId("157483426134816");
+        commentBean.setCommentUserId("0");
+        commentBean.setCommentDetails("写得好");
+        commentBean.setCommentDate(new Date());
+
+        mapper.addComment(commentBean);
     }
 }
