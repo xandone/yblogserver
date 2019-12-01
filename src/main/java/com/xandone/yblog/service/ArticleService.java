@@ -13,7 +13,9 @@ import java.util.Map;
 public interface ArticleService {
     ArticleBean addArticle(Map<String, Object> map) throws Exception;
 
-    BaseListResult getArticleList(Integer page, Integer row,Integer type) throws Exception;
+    BaseListResult getArticleList(Integer page, Integer row, Integer type) throws Exception;
 
     ArticleBean getArtById(String artId) throws Exception;
+
+    void upDateArtBrowse(ArticleBean articleBean);
 }

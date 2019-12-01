@@ -27,10 +27,10 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public BaseListResult getAllArtCommentById(Integer page, Integer row, String jokeId) throws Exception {
+    public BaseListResult getAllArtCommentById(Integer page, Integer row, String artId) throws Exception {
         BaseListResult base = new BaseListResult();
         PageHelper.startPage(page, row);
-        List<CommentBean> list = commentMapper.getAllArtCommentById(jokeId);
+        List<CommentBean> list = commentMapper.getAllArtCommentById(artId);
         int total = (int) new PageInfo<>(list).getTotal();
         base.setData(list);
         base.setTotal(total);

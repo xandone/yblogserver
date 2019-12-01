@@ -54,4 +54,12 @@
         where art_id = #{artId}
     </select>
 
+    <update id="upDateArtBrowse" parameterType="com.xandone.yblog.pojo.ArticleBean">
+        update y_article
+        <set>
+            <if test="artBrowseCount != 0">art_browse_count = #{artBrowseCount,jdbcType=INTEGER},</if>
+        </set>
+        where art_id = #{artId}
+    </update>
+
 </mapper>

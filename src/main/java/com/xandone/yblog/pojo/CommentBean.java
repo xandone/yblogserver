@@ -14,6 +14,7 @@ public class CommentBean {
     private String artId;
     private String commentUserId;
     private String commentDetails;
+    private String commentUserVer;
     private Date commentDate;
 
     private String commentNick;
@@ -76,4 +77,11 @@ public class CommentBean {
         this.commentIcon = commentIcon;
     }
 
+    public String getCommentUserVer() {
+        return commentUserVer;
+    }
+
+    public void setCommentUserVer(String commentUserVer) {
+        this.commentUserVer = commentUserVer;
+    }
 }

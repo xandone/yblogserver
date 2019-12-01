@@ -12,5 +12,5 @@ import com.xandone.yblog.pojo.CommentBean;
 public interface CommentService {
     void addComment(CommentBean commentBean) throws Exception;
 
-    BaseListResult getAllArtCommentById(Integer page, Integer row, String jokeId) throws Exception;
+    BaseListResult getAllArtCommentById(Integer page, Integer row, String artId) throws Exception;
 }

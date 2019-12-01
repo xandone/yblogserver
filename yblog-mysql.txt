@@ -47,6 +47,7 @@ primary key (id)
 create table y_art_comment(
 id int(11) unsigned not null auto_increment,
 comment_id varchar(18) not null,
+comment_user_ver varchar(100) default null,
 art_id varchar(18),
 comment_user_id varchar(18),
 comment_details mediumtext,

@@ -15,4 +15,6 @@ public interface ArticleMapper {
     void addArticle(ArticleBean articleBean);
 
     ArticleBean getArtBeanById(String artId);
+
+    void upDateArtBrowse(ArticleBean articleBean);
 }

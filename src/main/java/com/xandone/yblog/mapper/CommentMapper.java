@@ -12,7 +12,7 @@ import java.util.List;
 public interface CommentMapper {
     void addComment(CommentBean commentBean);
 
-    List<CommentBean> getAllArtCommentById(String jokeId);
+    List<CommentBean> getAllArtCommentById(String artId);
 
 
 }

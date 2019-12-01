@@ -71,6 +71,11 @@ public class ArticleServiceImpl implements ArticleService {
         return articleBean;
     }
 
+    @Override
+    public void upDateArtBrowse(ArticleBean articleBean) {
+        articleMapper.upDateArtBrowse(articleBean);
+    }
+
 //    private JokeBean dealJokeBean(JokeBean bean) throws Exception {
 //        UserBean user = userMapper.getUserById(bean.getJokeUserId());
 //        List<JokeLikeBean> likeBeans = selectJokeLikeById(bean.getJokeId());

@@ -71,10 +71,14 @@ public class ArticleController {
 
     @RequestMapping(value = "/artDetails")
     @ResponseBody
-    public BaseResult getArtDetailsById(@RequestParam(value = "artId") String jokeId) {
+    public BaseResult getArtDetailsById(@RequestParam(value = "artId") String artId) {
         BaseResult baseResult = new BaseResult();
         try {
-            ArticleBean jokeBean = articleService.getArtById(jokeId);
+            ArticleBean articleBean = articleService.getArtById(artId);
+            articleBean.setArtBrowseCount(articleBean.getArtBrowseCount() + 1);
+            articleService.upDateArtBrowse(articleBean);
+
+            ArticleBean jokeBean = articleService.getArtById(artId);
             List<ArticleBean> list = new ArrayList<>();
             list.add(jokeBean);
             baseResult.setData(list);
