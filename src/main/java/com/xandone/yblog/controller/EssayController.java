@@ -76,6 +76,9 @@ public class EssayController {
         BaseResult baseResult = new BaseResult();
         try {
             EssayBean essayBean = essayService.getEssayById(essayId);
+            essayBean.setEssayBrowseCount(essayBean.getEssayBrowseCount() + 1);
+            essayService.upDateArtBrowse(essayBean);
+
             List<EssayBean> list = new ArrayList<>();
             list.add(essayBean);
             baseResult.setData(list);

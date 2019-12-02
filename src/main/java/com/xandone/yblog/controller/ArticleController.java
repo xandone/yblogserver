@@ -78,9 +78,8 @@ public class ArticleController {
             articleBean.setArtBrowseCount(articleBean.getArtBrowseCount() + 1);
             articleService.upDateArtBrowse(articleBean);
 
-            ArticleBean jokeBean = articleService.getArtById(artId);
             List<ArticleBean> list = new ArrayList<>();
-            list.add(jokeBean);
+            list.add(articleBean);
             baseResult.setData(list);
             baseResult.setCode(ReturnCode.SUCCESS);
             baseResult.setMsg(ReturnCode.MES_REQUEST_SUCCESS);

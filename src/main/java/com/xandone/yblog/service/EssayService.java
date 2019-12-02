@@ -16,4 +16,6 @@ public interface EssayService {
     BaseListResult getEssayList(Integer page, Integer row, Integer type) throws Exception;
 
     EssayBean getEssayById(String essayId) throws Exception;
+
+    void upDateArtBrowse(EssayBean essayBean);
 }

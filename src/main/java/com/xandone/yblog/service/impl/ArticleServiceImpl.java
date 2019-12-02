@@ -4,7 +4,10 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xandone.yblog.common.BaseListResult;
 import com.xandone.yblog.mapper.ArticleMapper;
+import com.xandone.yblog.mapper.CommentMapper;
 import com.xandone.yblog.pojo.ArticleBean;
+import com.xandone.yblog.pojo.CommentBean;
+import com.xandone.yblog.pojo.EssayBean;
 import com.xandone.yblog.service.ArticleService;
 import com.xandone.yblog.utils.IDUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,8 @@ import java.util.Map;
 public class ArticleServiceImpl implements ArticleService {
     @Autowired
     ArticleMapper articleMapper;
+    @Autowired
+    CommentMapper commentMapper;
 
     @Override
     public ArticleBean addArticle(Map<String, Object> map) throws Exception {
@@ -55,9 +60,9 @@ public class ArticleServiceImpl implements ArticleService {
         }
         int total = (int) new PageInfo<>(list).getTotal();
 
-//        for (ArticleBean bean : list) {
-//            dealJokeBean(bean);
-//        }
+        for (ArticleBean bean : list) {
+            dealComment(bean);
+        }
 
         base.setData(list);
         base.setTotal(total);
@@ -67,7 +72,6 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public ArticleBean getArtById(String artId) throws Exception {
         ArticleBean articleBean = articleMapper.getArtBeanById(artId);
-//        dealJokeBean(articleBean);
         return articleBean;
     }
 
@@ -76,21 +80,12 @@ public class ArticleServiceImpl implements ArticleService {
         articleMapper.upDateArtBrowse(articleBean);
     }
 
-//    private JokeBean dealJokeBean(JokeBean bean) throws Exception {
-//        UserBean user = userMapper.getUserById(bean.getJokeUserId());
-//        List<JokeLikeBean> likeBeans = selectJokeLikeById(bean.getJokeId());
-//        List<CommentBean> commentBeans = jokeMapper.getJokeCommentById(bean.getJokeId());
-//        if (user != null) {
-//            bean.setJokeUserNick(user.getNickname());
-//            bean.setJokeUserIcon(user.getUserIcon());
-//        }
-//        if (likeBeans != null) {
-//            bean.setArticleLikeCount(likeBeans.size());
-//        }
-//        if (commentBeans != null) {
-//            bean.setArticleCommentCount(commentBeans.size());
-//        }
-//        return bean;
-//    }
+    private ArticleBean dealComment(ArticleBean bean) throws Exception {
+        List<CommentBean> commentBeans = commentMapper.getAllArtCommentById(bean.getArtId());
+        if (commentBeans != null) {
+            bean.setArtCommentCount(commentBeans.size());
+        }
+        return bean;
+    }
 
 }

@@ -3,7 +3,9 @@ package com.xandone.yblog.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xandone.yblog.common.BaseListResult;
+import com.xandone.yblog.mapper.CommentMapper;
 import com.xandone.yblog.mapper.EssayMapper;
+import com.xandone.yblog.pojo.CommentBean;
 import com.xandone.yblog.pojo.EssayBean;
 import com.xandone.yblog.service.EssayService;
 import com.xandone.yblog.utils.IDUtils;
@@ -23,6 +25,8 @@ import java.util.Map;
 public class EssayServiceImpl implements EssayService {
     @Autowired
     EssayMapper essayMapper;
+    @Autowired
+    CommentMapper commentMapper;
 
     @Override
     public EssayBean addEssay(Map<String, Object> map) throws Exception {
@@ -54,9 +58,9 @@ public class EssayServiceImpl implements EssayService {
         }
         int total = (int) new PageInfo<>(list).getTotal();
 
-//        for (ArticleBean bean : list) {
-//            dealJokeBean(bean);
-//        }
+        for (EssayBean essayBean : list) {
+            dealComment(essayBean);
+        }
 
         base.setData(list);
         base.setTotal(total);
@@ -66,25 +70,21 @@ public class EssayServiceImpl implements EssayService {
     @Override
     public EssayBean getEssayById(String essayId) throws Exception {
         EssayBean essayBean = essayMapper.getEssayById(essayId);
-//        dealJokeBean(articleBean);
+
         return essayBean;
     }
 
-//    private JokeBean dealJokeBean(JokeBean bean) throws Exception {
-//        UserBean user = userMapper.getUserById(bean.getJokeUserId());
-//        List<JokeLikeBean> likeBeans = selectJokeLikeById(bean.getJokeId());
-//        List<CommentBean> commentBeans = jokeMapper.getJokeCommentById(bean.getJokeId());
-//        if (user != null) {
-//            bean.setJokeUserNick(user.getNickname());
-//            bean.setJokeUserIcon(user.getUserIcon());
-//        }
-//        if (likeBeans != null) {
-//            bean.setArticleLikeCount(likeBeans.size());
-//        }
-//        if (commentBeans != null) {
-//            bean.setArticleCommentCount(commentBeans.size());
-//        }
-//        return bean;
-//    }
+    @Override
+    public void upDateArtBrowse(EssayBean essayBean) {
+        essayMapper.upDateArtBrowse(essayBean);
+    }
+
+    private EssayBean dealComment(EssayBean bean) throws Exception {
+        List<CommentBean> commentBeans = commentMapper.getAllArtCommentById(bean.getEssayId());
+        if (commentBeans != null) {
+            bean.setEssayCommentCount(commentBeans.size());
+        }
+        return bean;
+    }
 
 }

@@ -54,4 +54,13 @@
         where essay_id = #{essayId}
     </select>
 
+    <update id="upDateArtBrowse" parameterType="com.xandone.yblog.pojo.EssayBean">
+        update y_essay
+        <set>
+            <if test="essayBrowseCount != 0">essay_browse_count = #{essayBrowseCount,jdbcType=INTEGER},</if>
+        </set>
+        where essay_id = #{essayId}
+    </update>
+
+
 </mapper>
