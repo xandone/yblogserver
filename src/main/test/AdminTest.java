@@ -1,11 +1,5 @@
-import com.xandone.yblog.mapper.ArticleMapper;
-import com.xandone.yblog.mapper.BannerMapper;
-import com.xandone.yblog.mapper.CommentMapper;
-import com.xandone.yblog.mapper.EssayMapper;
-import com.xandone.yblog.pojo.ArticleBean;
-import com.xandone.yblog.pojo.BannerBean;
-import com.xandone.yblog.pojo.CommentBean;
-import com.xandone.yblog.pojo.EssayBean;
+import com.xandone.yblog.mapper.*;
+import com.xandone.yblog.pojo.*;
 import com.xandone.yblog.utils.IDUtils;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -78,5 +72,24 @@ public class AdminTest {
         articleBean.setPostTime(new Date());
         mapper.addEssay(articleBean);
 
+    }
+
+
+    @Test
+    public void addAdmin() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
+        AdminMapper mapper = context.getBean(AdminMapper.class);
+
+        AdminBean adminBean = new AdminBean(
+                "admin",
+                "123",
+                "Admin",
+                "250",
+                new Date());
+        adminBean.setAdminIcon("http://p1.pstatp.com/large/pgc-image/8f5a9eaea7cb426c895a67e6557eec32");
+        adminBean.setTotalArts(0);
+        adminBean.setEmail("765478955@qq.com");
+
+        mapper.addAdmin(adminBean);
     }
 }

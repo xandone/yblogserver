@@ -54,3 +54,20 @@ comment_details mediumtext,
 comment_date datetime DEFAULT NULL,
 primary key (id)
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+## Admin表
+create table y_admin(
+id int(11) unsigned not null auto_increment,
+name varchar(20) not null unique,
+password varchar(20) not null,
+nickname varchar(20) not null,
+admin_id varchar(18) not null,
+admin_icon varchar(255) DEFAULT NULL,
+permisson varchar(255) DEFAULT NULL,
+token varchar(100),
+regist_time datetime,
+last_login_time datetime,
+email varchar(20) DEFAULT null,
+total_arts int(10) DEFAULT '0',
+primary key(id)
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
