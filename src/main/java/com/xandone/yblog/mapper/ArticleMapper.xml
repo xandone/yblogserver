@@ -62,4 +62,16 @@
         where art_id = #{artId}
     </update>
 
+    <update id="editArt" parameterType="com.xandone.yblog.pojo.ArticleBean">
+        update y_article
+        <set>
+            <if test="title != null">title = #{title,jdbcType=VARCHAR},</if>
+            <if test="coverImg != null">cover_img = #{coverImg,jdbcType=VARCHAR},</if>
+            <if test="content != null">content = #{content,jdbcType=VARCHAR},</if>
+            <if test="contentHtml != null">contentHtml = #{contentHtml,jdbcType=VARCHAR},</if>
+            <if test="type != null">type = #{type,jdbcType=VARCHAR},</if>
+        </set>
+        where art_id = #{artId}
+    </update>
+
 </mapper>

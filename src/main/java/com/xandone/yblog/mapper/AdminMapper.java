@@ -8,4 +8,10 @@ public interface AdminMapper {
     AdminBean getAdminByName(String name);
 
     void updateAdmin(AdminBean userBean);
+
+    AdminBean getAdminById(String id);
+
+    int getArtCount();
+
+    int getEssayCount();
 }

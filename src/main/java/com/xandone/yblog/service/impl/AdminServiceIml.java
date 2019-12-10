@@ -25,4 +25,11 @@ public class AdminServiceIml implements AdminService {
     public void updateAdmin(AdminBean adminBean) throws Exception {
         adminMapper.updateAdmin(adminBean);
     }
+
+    @Override
+    public AdminBean getAdminById(String userId) throws Exception {
+        AdminBean adminBean = adminMapper.getAdminById(userId);
+        adminBean.setTotalArts(adminMapper.getArtCount() + adminMapper.getEssayCount());
+        return adminBean;
+    }
 }

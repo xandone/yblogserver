@@ -1,6 +1,7 @@
 package com.xandone.yblog.controller;
 
 import com.xandone.yblog.common.BaseResult;
+import com.xandone.yblog.common.Config;
 import com.xandone.yblog.common.ReturnCode;
 import com.xandone.yblog.pojo.AdminBean;
 import com.xandone.yblog.service.AdminService;
@@ -59,5 +60,26 @@ public class AdminController {
         }
         return baseResult;
     }
+
+
+    @RequestMapping(value = "/userInfo")
+    @ResponseBody
+    public BaseResult getUserInfo() {
+        BaseResult baseResult = new BaseResult();
+        List<AdminBean> list = new ArrayList<>();
+        try {
+            AdminBean userBean = adminService.getAdminById(Config.ADMIN_ID);
+            list.add(userBean);
+            baseResult.setData(list);
+            baseResult.setCode(ReturnCode.SUCCESS);
+            baseResult.setMsg(ReturnCode.MES_REQUEST_SUCCESS);
+        } catch (Exception e) {
+            e.printStackTrace();
+            baseResult.setCode(ReturnCode.ERROR_CODE);
+            baseResult.setMsg(ReturnCode.MES_SERVER_ERROR);
+        }
+        return baseResult;
+    }
+
 
 }

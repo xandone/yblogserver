@@ -14,4 +14,6 @@ public interface AdminService {
 
     void updateAdmin(AdminBean adminBean) throws Exception;
 
+    AdminBean getAdminById(String userId) throws Exception;
+
 }

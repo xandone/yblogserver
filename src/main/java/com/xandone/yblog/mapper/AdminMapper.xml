@@ -48,4 +48,17 @@
         where admin_id = #{adminId}
     </update>
 
+    <select id="getAdminById" parameterType="java.lang.String"
+            resultMap="adminBean">
+        select * from y_admin where admin_id = #{adminId}
+    </select>
+
+    <select id="getArtCount" resultType="java.lang.Integer">
+        select count(*) from y_article
+    </select>
+
+    <select id="getEssayCount" resultType="java.lang.Integer">
+        select count(*) from y_essay
+    </select>
+
 </mapper>
