@@ -10,6 +10,7 @@
         <result column="art_comment_count" property="artCommentCount" jdbcType="INTEGER"/>
         <result column="art_browse_count" property="artBrowseCount" jdbcType="INTEGER"/>
         <result column="type" property="type" jdbcType="INTEGER"/>
+        <result column="type_name" property="typeName" jdbcType="VARCHAR"/>
         <result column="cover_img" property="coverImg" jdbcType="VARCHAR"/>
         <result column="post_time" property="postTime" jdbcType="TIMESTAMP"/>
         <result column="content" property="content" jdbcType="VARCHAR"/>
@@ -24,6 +25,7 @@
         art_comment_count,
         art_browse_count,
         type,
+        type_name,
         cover_img,
         post_time,
         content,
@@ -35,6 +37,7 @@
         #{artCommentCount},
         #{artBrowseCount},
         #{type},
+        #{typeName},
         #{coverImg},
         #{postTime},
         #{content},
@@ -70,6 +73,7 @@
             <if test="content != null">content = #{content,jdbcType=VARCHAR},</if>
             <if test="contentHtml != null">contentHtml = #{contentHtml,jdbcType=VARCHAR},</if>
             <if test="type != null">type = #{type,jdbcType=VARCHAR},</if>
+            <if test="typeName != null">type_name = #{typeName,jdbcType=VARCHAR},</if>
         </set>
         where art_id = #{artId}
     </update>

@@ -10,6 +10,7 @@ import com.xandone.yblog.pojo.CommentBean;
 import com.xandone.yblog.pojo.EssayBean;
 import com.xandone.yblog.service.ArticleService;
 import com.xandone.yblog.utils.IDUtils;
+import com.xandone.yblog.utils.SimpleUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,7 +42,9 @@ public class ArticleServiceImpl implements ArticleService {
         articleBean.setPostTime(new Date());
         articleBean.setArtCommentCount(0);
         articleBean.setArtBrowseCount(0);
-        articleBean.setType((Integer) map.get("type"));
+        int type = (Integer) map.get("type");
+        articleBean.setType(type);
+        articleBean.setTypeName(SimpleUtils.getArtType(type));
         articleBean.setCoverImg((String) map.get("coverImg"));
         articleMapper.addArticle(articleBean);
 
