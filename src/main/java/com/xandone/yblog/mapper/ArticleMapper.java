@@ -17,4 +17,8 @@ public interface ArticleMapper {
     ArticleBean getArtBeanById(String artId);
 
     void upDateArtBrowse(ArticleBean articleBean);
+
+    List<ArticleBean> getArtListByType(int type);
+
+    int getArtCountByType(int type);
 }

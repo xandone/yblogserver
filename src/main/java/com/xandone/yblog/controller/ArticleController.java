@@ -3,6 +3,7 @@ package com.xandone.yblog.controller;
 import com.xandone.yblog.common.BaseListResult;
 import com.xandone.yblog.common.BaseResult;
 import com.xandone.yblog.common.ReturnCode;
+import com.xandone.yblog.pojo.ArtTypeBean;
 import com.xandone.yblog.pojo.ArticleBean;
 import com.xandone.yblog.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,11 +50,11 @@ public class ArticleController {
     @RequestMapping(value = "/artlist")
     @ResponseBody
     public BaseListResult getAllArt(@RequestParam(value = "page") Integer page,
-                                     @RequestParam(value = "row") Integer row,
-                                     Integer tag) {
+                                    @RequestParam(value = "row") Integer row,
+                                    Integer type) {
         BaseListResult baseResult = new BaseListResult();
         try {
-            BaseListResult result = articleService.getArticleList(page, row, tag);
+            BaseListResult result = articleService.getArticleList(page, row, type);
             if (result != null) {
                 result.setCode(ReturnCode.SUCCESS);
                 result.setMsg(ReturnCode.MES_REQUEST_SUCCESS);
@@ -80,6 +81,24 @@ public class ArticleController {
 
             List<ArticleBean> list = new ArrayList<>();
             list.add(articleBean);
+            baseResult.setData(list);
+            baseResult.setCode(ReturnCode.SUCCESS);
+            baseResult.setMsg(ReturnCode.MES_REQUEST_SUCCESS);
+            return baseResult;
+        } catch (Exception e) {
+            e.printStackTrace();
+            baseResult.setCode(ReturnCode.ERROR_CODE);
+            baseResult.setMsg(ReturnCode.MES_SERVER_ERROR);
+        }
+        return baseResult;
+    }
+
+    @RequestMapping(value = "/artTypeList")
+    @ResponseBody
+    public BaseResult getArtTypeList() {
+        BaseResult baseResult = new BaseResult();
+        try {
+            List<ArtTypeBean> list = articleService.getArtCountAllType();
             baseResult.setData(list);
             baseResult.setCode(ReturnCode.SUCCESS);
             baseResult.setMsg(ReturnCode.MES_REQUEST_SUCCESS);

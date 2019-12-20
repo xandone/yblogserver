@@ -6,6 +6,9 @@ package com.xandone.yblog.config;
  * description：
  */
 public class Constant {
+    /**
+     * 对应id=下标
+     */
     public static final String[] ART_TYPE = {
             "编程",
             "Android",
@@ -15,5 +18,5 @@ public class Constant {
             "算法",
             "Python",
             "Canvas",
-            "Game" };
+            "Game"};
 }

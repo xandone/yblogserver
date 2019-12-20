@@ -1,8 +1,10 @@
 package com.xandone.yblog.service;
 
 import com.xandone.yblog.common.BaseListResult;
+import com.xandone.yblog.pojo.ArtTypeBean;
 import com.xandone.yblog.pojo.ArticleBean;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,4 +20,6 @@ public interface ArticleService {
     ArticleBean getArtById(String artId) throws Exception;
 
     void upDateArtBrowse(ArticleBean articleBean);
+
+    List<ArtTypeBean> getArtCountAllType();
 }

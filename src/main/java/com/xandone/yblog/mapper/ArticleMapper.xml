@@ -51,6 +51,15 @@
         id desc
     </select>
 
+    <select id="getArtListByType" resultMap="BaseResultMap">
+        select * from y_article where type=#{type} order by
+        id desc
+    </select>
+
+    <select id="getArtCountByType" resultType="java.lang.Integer">
+        select count(*) from y_article where type=#{type}
+    </select>
+
     <select id="getArtBeanById" resultMap="BaseResultMap">
         select * from
         y_article
