@@ -20,7 +20,7 @@ public class UploadQiNiu {
     /**
      * 要上传的空间
      */
-    private static String bucketName = Config.CONST_BUCKET_NAME;
+    private static String BUCKET_NAME = Config.CONST_BUCKET_NAME;
 
     /**
      * 密钥配置
@@ -33,6 +33,6 @@ public class UploadQiNiu {
      * @return
      */
     public static String getUpToken() {
-        return auth.uploadToken(bucketName);
+        return auth.uploadToken(BUCKET_NAME);
     }
 }

@@ -91,7 +91,7 @@ public class ArticleServiceImpl implements ArticleService {
     public List<ArtTypeBean> getArtCountAllType() {
         List<ArtTypeBean> list = new ArrayList<>();
         for (int i = 0; i < ART_TYPE.length; i++) {
-            ArtTypeBean artTypeBean = new ArtTypeBean(articleMapper.getArtCountByType(i), ART_TYPE[i]);
+            ArtTypeBean artTypeBean = new ArtTypeBean(articleMapper.getArtCountByType(i), ART_TYPE[i], i);
             list.add(artTypeBean);
         }
         return list;

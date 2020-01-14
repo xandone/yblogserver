@@ -8,10 +8,12 @@ package com.xandone.yblog.pojo;
 public class ArtTypeBean {
     private int count;
     private String typeName;
+    private int type;
 
-    public ArtTypeBean(int count, String typeName) {
+    public ArtTypeBean(int count, String typeName,int type ) {
         this.count = count;
         this.typeName = typeName;
+        this.type = type;
     }
 
     public int getCount() {
@@ -28,5 +30,13 @@ public class ArtTypeBean {
 
     public void setTypeName(String typeName) {
         this.typeName = typeName;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }
