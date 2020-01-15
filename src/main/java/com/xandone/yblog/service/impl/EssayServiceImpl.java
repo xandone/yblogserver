@@ -79,6 +79,20 @@ public class EssayServiceImpl implements EssayService {
         essayMapper.upDateArtBrowse(essayBean);
     }
 
+    @Override
+    public EssayBean editEssay(Map<String, Object> map) throws Exception {
+        String essayId = (String) map.get("essayId");
+        EssayBean essayBean = getEssayById(essayId);
+
+        essayBean.setTitle((String) map.get("title"));
+        essayBean.setContent((String) map.get("content"));
+        essayBean.setContentHtml((String) map.get("contentHtml"));
+        essayBean.setCoverImg((String) map.get("coverImg"));
+        essayMapper.editEssay(essayBean);
+
+        return essayBean;
+    }
+
     private EssayBean dealComment(EssayBean bean) throws Exception {
         List<CommentBean> commentBeans = commentMapper.getAllArtCommentById(bean.getEssayId());
         if (commentBeans != null) {

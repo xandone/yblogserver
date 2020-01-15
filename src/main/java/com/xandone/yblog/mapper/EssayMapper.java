@@ -17,4 +17,6 @@ public interface EssayMapper {
     EssayBean getEssayById(String essayId);
 
     void upDateArtBrowse(EssayBean essayBean);
+
+    void editEssay(EssayBean essayBean);
 }

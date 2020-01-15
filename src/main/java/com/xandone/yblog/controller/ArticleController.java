@@ -6,6 +6,7 @@ import com.xandone.yblog.common.ReturnCode;
 import com.xandone.yblog.pojo.ArtTypeBean;
 import com.xandone.yblog.pojo.ArticleBean;
 import com.xandone.yblog.service.ArticleService;
+import org.apache.http.util.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -29,8 +30,13 @@ public class ArticleController {
     @ResponseBody
     public BaseResult addArt(@RequestBody Map<String, Object> map) {
         BaseResult baseResult = new BaseResult();
+        ArticleBean articleBean;
         try {
-            ArticleBean articleBean = articleService.addArticle(map);
+            if (map.get("artId") == null || TextUtils.isEmpty((String) map.get("artId"))) {
+                articleBean = articleService.addArticle(map);
+            } else {
+                articleBean = articleService.editArticle(map);
+            }
             List<ArticleBean> list = new ArrayList<>();
             list.add(articleBean);
             baseResult.setData(list);

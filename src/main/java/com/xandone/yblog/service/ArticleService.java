@@ -22,4 +22,6 @@ public interface ArticleService {
     void upDateArtBrowse(ArticleBean articleBean);
 
     List<ArtTypeBean> getArtCountAllType();
+
+    ArticleBean editArticle(Map<String, Object> map) throws Exception;
 }

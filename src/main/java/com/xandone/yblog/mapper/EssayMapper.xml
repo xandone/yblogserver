@@ -63,4 +63,16 @@
     </update>
 
 
+    <update id="editEssay" parameterType="com.xandone.yblog.pojo.EssayBean">
+        update y_essay
+        <set>
+            <if test="title != null">title = #{title,jdbcType=VARCHAR},</if>
+            <if test="coverImg != null">imglist = #{coverImg,jdbcType=VARCHAR},</if>
+            <if test="content != null">content = #{content,jdbcType=VARCHAR},</if>
+            <if test="contentHtml != null">contentHtml = #{contentHtml,jdbcType=VARCHAR},</if>
+        </set>
+        where essay_id = #{essayId}
+    </update>
+
+
 </mapper>

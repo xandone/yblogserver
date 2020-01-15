@@ -74,7 +74,7 @@
         where art_id = #{artId}
     </update>
 
-    <update id="editArt" parameterType="com.xandone.yblog.pojo.ArticleBean">
+    <update id="editArticle" parameterType="com.xandone.yblog.pojo.ArticleBean">
         update y_article
         <set>
             <if test="title != null">title = #{title,jdbcType=VARCHAR},</if>

@@ -3,9 +3,9 @@ package com.xandone.yblog.controller;
 import com.xandone.yblog.common.BaseListResult;
 import com.xandone.yblog.common.BaseResult;
 import com.xandone.yblog.common.ReturnCode;
-import com.xandone.yblog.pojo.ArticleBean;
 import com.xandone.yblog.pojo.EssayBean;
 import com.xandone.yblog.service.EssayService;
+import org.apache.http.util.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -29,8 +29,13 @@ public class EssayController {
     @ResponseBody
     public BaseResult addEssay(@RequestBody Map<String, Object> map) {
         BaseResult baseResult = new BaseResult();
+        EssayBean essayBean;
         try {
-            EssayBean essayBean = essayService.addEssay(map);
+            if (map.get("essayId") == null || TextUtils.isEmpty((String) map.get("essayId"))) {
+                essayBean = essayService.addEssay(map);
+            } else {
+                essayBean = essayService.editEssay(map);
+            }
             List<EssayBean> list = new ArrayList<>();
             list.add(essayBean);
             baseResult.setData(list);

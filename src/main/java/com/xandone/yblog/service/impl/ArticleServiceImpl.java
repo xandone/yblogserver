@@ -97,6 +97,23 @@ public class ArticleServiceImpl implements ArticleService {
         return list;
     }
 
+    @Override
+    public ArticleBean editArticle(Map<String, Object> map) throws Exception {
+        String artId = (String) map.get("artId");
+        ArticleBean articleBean = getArtById(artId);
+
+        articleBean.setTitle((String) map.get("title"));
+        articleBean.setContent((String) map.get("content"));
+        articleBean.setContentHtml((String) map.get("contentHtml"));
+        int type = (Integer) map.get("type");
+        articleBean.setType(type);
+        articleBean.setTypeName(SimpleUtils.getArtType(type));
+        articleBean.setCoverImg((String) map.get("coverImg"));
+        articleMapper.editArticle(articleBean);
+
+        return articleBean;
+    }
+
     private ArticleBean dealComment(ArticleBean bean) throws Exception {
         List<CommentBean> commentBeans = commentMapper.getAllArtCommentById(bean.getArtId());
         if (commentBeans != null) {
