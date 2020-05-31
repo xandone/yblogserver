@@ -3,12 +3,12 @@ package com.xandone.yblog.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xandone.yblog.common.BaseListResult;
+import com.xandone.yblog.common.Config;
 import com.xandone.yblog.mapper.ArticleMapper;
 import com.xandone.yblog.mapper.CommentMapper;
 import com.xandone.yblog.pojo.ArtTypeBean;
 import com.xandone.yblog.pojo.ArticleBean;
 import com.xandone.yblog.pojo.CommentBean;
-import com.xandone.yblog.pojo.EssayBean;
 import com.xandone.yblog.service.ArticleService;
 import com.xandone.yblog.utils.IDUtils;
 import com.xandone.yblog.utils.SimpleUtils;
@@ -39,7 +39,7 @@ public class ArticleServiceImpl implements ArticleService {
         ArticleBean articleBean = new ArticleBean();
 
         articleBean.setArtId(IDUtils.RandomId());
-        articleBean.setArtUserId((String) map.get("artUserId"));
+        articleBean.setArtUserId(Config.ADMIN_ID);
         articleBean.setTitle((String) map.get("title"));
         articleBean.setContent((String) map.get("content"));
         articleBean.setContentHtml((String) map.get("contentHtml"));

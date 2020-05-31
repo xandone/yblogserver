@@ -12,6 +12,20 @@ public class BaseResult {
     private String msg;
     private List<?> data;
 
+    public BaseResult() {
+    }
+
+    public BaseResult(int code, String msg) {
+        this.code = code;
+        this.msg = msg;
+    }
+
+    public BaseResult(int code, String msg, List<?> data) {
+        this.code = code;
+        this.msg = msg;
+        this.data = data;
+    }
+
     public int getCode() {
         return code;
     }

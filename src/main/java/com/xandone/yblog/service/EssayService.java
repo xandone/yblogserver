@@ -20,4 +20,6 @@ public interface EssayService {
     void upDateArtBrowse(EssayBean essayBean);
 
     EssayBean editEssay(Map<String, Object> map) throws Exception;
+
+    void setEssayAsBanner(EssayBean essayBean) throws Exception;
 }

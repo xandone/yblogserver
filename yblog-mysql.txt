@@ -41,6 +41,7 @@ imglist mediumtext DEFAULT NULL,
 post_time datetime DEFAULT NULL,
 content mediumtext,
 contentHtml mediumtext,
+isTopping tinyint(1)DEFAULT 0,
 primary key (id)
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 

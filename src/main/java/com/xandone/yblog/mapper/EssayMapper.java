@@ -19,4 +19,5 @@ public interface EssayMapper {
     void upDateArtBrowse(EssayBean essayBean);
 
     void editEssay(EssayBean essayBean);
+
 }

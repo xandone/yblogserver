@@ -5,6 +5,7 @@ import com.xandone.yblog.common.BaseResult;
 import com.xandone.yblog.common.ReturnCode;
 import com.xandone.yblog.pojo.EssayBean;
 import com.xandone.yblog.service.EssayService;
+import com.xandone.yblog.utils.SimpleUtils;
 import org.apache.http.util.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -89,6 +90,24 @@ public class EssayController {
             baseResult.setData(list);
             baseResult.setCode(ReturnCode.SUCCESS);
             baseResult.setMsg(ReturnCode.MES_REQUEST_SUCCESS);
+            return baseResult;
+        } catch (Exception e) {
+            e.printStackTrace();
+            baseResult.setCode(ReturnCode.ERROR_CODE);
+            baseResult.setMsg(ReturnCode.MES_SERVER_ERROR);
+        }
+        return baseResult;
+    }
+
+    @RequestMapping(value = "/setBanner")
+    @ResponseBody
+    public BaseResult setEssayAsBanner(@RequestParam(value = "adminId") String adminId,
+                                       @RequestParam(value = "jsonEssay") String jsonEssay) {
+        BaseResult baseResult = new BaseResult();
+        try {
+            EssayBean essayBean = SimpleUtils.json2Pojo(jsonEssay, EssayBean.class);
+            essayService.setEssayAsBanner(essayBean);
+            baseResult.setCode(ReturnCode.SUCCESS);
             return baseResult;
         } catch (Exception e) {
             e.printStackTrace();

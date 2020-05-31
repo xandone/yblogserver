@@ -5,7 +5,7 @@
 <mapper namespace="com.xandone.yblog.mapper.EssayMapper">
     <resultMap id="BaseResultMap" type="com.xandone.yblog.pojo.EssayBean">
         <result column="essay_id" property="essayId" jdbcType="VARCHAR"/>
-        <result column="art_user_id" property="essayUserId" jdbcType="VARCHAR"/>
+        <result column="essay_user_id" property="essayUserId" jdbcType="VARCHAR"/>
         <result column="title" property="title" jdbcType="VARCHAR"/>
         <result column="essay_comment_count" property="essayCommentCount" jdbcType="INTEGER"/>
         <result column="essay_browse_count" property="essayBrowseCount" jdbcType="INTEGER"/>
@@ -14,6 +14,7 @@
         <result column="post_time" property="postTime" jdbcType="TIMESTAMP"/>
         <result column="content" property="content" jdbcType="VARCHAR"/>
         <result column="contentHtml" property="contentHtml" jdbcType="VARCHAR"/>
+        <result column="isTopping" property="isTopping" jdbcType="INTEGER"/>
     </resultMap>
 
     <insert id="addEssay" parameterType="com.xandone.yblog.pojo.EssayBean">
@@ -27,7 +28,8 @@
         imglist,
         post_time,
         content,
-        contentHtml
+        contentHtml,
+        isTopping
         ) values
         (#{essayId},
         #{essayUserId},
@@ -38,7 +40,8 @@
         #{coverImg},
         #{postTime},
         #{content},
-        #{contentHtml}
+        #{contentHtml},
+        #{isTopping}
         )
     </insert>
 
@@ -70,9 +73,9 @@
             <if test="coverImg != null">imglist = #{coverImg,jdbcType=VARCHAR},</if>
             <if test="content != null">content = #{content,jdbcType=VARCHAR},</if>
             <if test="contentHtml != null">contentHtml = #{contentHtml,jdbcType=VARCHAR},</if>
+            <if test="isTopping != null">isTopping = #{isTopping,jdbcType=INTEGER},</if>
         </set>
         where essay_id = #{essayId}
     </update>
-
 
 </mapper>

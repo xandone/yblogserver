@@ -20,6 +20,7 @@ public class EssayBean {
     private Date postTime;
     private String content;
     private String contentHtml;
+    private int isTopping;
 
     public String getEssayId() {
         return essayId;
@@ -101,5 +102,13 @@ public class EssayBean {
 
     public void setEssayBrowseCount(int essayBrowseCount) {
         this.essayBrowseCount = essayBrowseCount;
+    }
+
+    public int getIsTopping() {
+        return isTopping;
+    }
+
+    public void setIsTopping(int isTopping) {
+        this.isTopping = isTopping;
     }
 }

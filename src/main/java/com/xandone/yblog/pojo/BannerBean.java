@@ -13,6 +13,19 @@ public class BannerBean {
     private int pageViews;
     private Date upTime;
 
+    public BannerBean() {
+    }
+
+    public BannerBean(String userId, String articelId, String title, String imgUrl, String articleUrl, int pageViews, Date upTime) {
+        this.userId = userId;
+        this.articelId = articelId;
+        this.title = title;
+        this.imgUrl = imgUrl;
+        this.articleUrl = articleUrl;
+        this.pageViews = pageViews;
+        this.upTime = upTime;
+    }
+
     public String getUserId() {
         return userId;
     }

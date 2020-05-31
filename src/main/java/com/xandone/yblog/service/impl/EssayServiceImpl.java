@@ -3,12 +3,17 @@ package com.xandone.yblog.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xandone.yblog.common.BaseListResult;
+import com.xandone.yblog.common.Config;
+import com.xandone.yblog.mapper.BannerMapper;
 import com.xandone.yblog.mapper.CommentMapper;
 import com.xandone.yblog.mapper.EssayMapper;
+import com.xandone.yblog.pojo.BannerBean;
 import com.xandone.yblog.pojo.CommentBean;
 import com.xandone.yblog.pojo.EssayBean;
 import com.xandone.yblog.service.EssayService;
 import com.xandone.yblog.utils.IDUtils;
+import com.xandone.yblog.utils.SimpleUtils;
+import org.apache.http.util.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,13 +32,15 @@ public class EssayServiceImpl implements EssayService {
     EssayMapper essayMapper;
     @Autowired
     CommentMapper commentMapper;
+    @Autowired
+    BannerMapper bannerMapper;
 
     @Override
     public EssayBean addEssay(Map<String, Object> map) throws Exception {
         EssayBean essayBean = new EssayBean();
 
         essayBean.setEssayId(IDUtils.RandomId());
-        essayBean.setEssayUserId((String) map.get("artUserId"));
+        essayBean.setEssayUserId(Config.ADMIN_ID);
         essayBean.setTitle((String) map.get("title"));
         essayBean.setContent((String) map.get("content"));
         essayBean.setContentHtml((String) map.get("contentHtml"));
@@ -93,6 +100,31 @@ public class EssayServiceImpl implements EssayService {
         return essayBean;
     }
 
+    @Override
+    public void setEssayAsBanner(EssayBean essayBean) throws Exception {
+        if (essayBean.getIsTopping() == 0) {
+            essayMapper.editEssay(essayBean);
+            bannerMapper.deleteBannerById(essayBean.getEssayId());
+            return;
+        }
+        EssayBean temp = getEssayById(essayBean.getEssayId());
+        String imgJson = temp.getCoverImg();
+        String[] imgs = SimpleUtils.json2Pojo(imgJson, String[].class);
+        if (imgs == null || imgs.length == 0) {
+            throw new Exception("该文章无图片");
+        }
+        BannerBean bannerBean = new BannerBean(temp.getEssayUserId(),
+                temp.getEssayId(),
+                temp.getTitle(),
+                imgs[0],
+                temp.getEssayId(),
+                temp.getEssayBrowseCount(),
+                temp.getPostTime()
+        );
+        bannerMapper.addBanner(bannerBean);
+        essayMapper.editEssay(essayBean);
+    }
+
     private EssayBean dealComment(EssayBean bean) throws Exception {
         List<CommentBean> commentBeans = commentMapper.getAllArtCommentById(bean.getEssayId());
         if (commentBeans != null) {
@@ -100,5 +132,4 @@ public class EssayServiceImpl implements EssayService {
         }
         return bean;
     }
-
 }
