@@ -61,7 +61,7 @@ primary key (id)
 create table y_admin(
 id int(11) unsigned not null auto_increment,
 name varchar(20) not null unique,
-password varchar(20) not null,
+password varchar(50) not null,
 nickname varchar(20) not null,
 admin_id varchar(18) not null,
 admin_icon varchar(255) DEFAULT NULL,
