@@ -10,6 +10,7 @@ public class Constant {
      * 对应id=下标
      */
     public static final String[] ART_TYPE = {
+            "全部",
             "编程",
             "Android",
             "Java",

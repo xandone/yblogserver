@@ -92,4 +92,18 @@ public class AdminTest {
 
         mapper.addAdmin(adminBean);
     }
+
+
+    @Test
+    public void addArtTag() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
+        ArtTagMapper mapper = context.getBean(ArtTagMapper.class);
+
+        ArtTypeBean artTypeBean = new ArtTypeBean(
+                4,
+                "Android",
+                1);
+
+        mapper.addType(artTypeBean);
+    }
 }

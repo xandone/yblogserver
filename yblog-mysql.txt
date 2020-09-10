@@ -73,3 +73,12 @@ email varchar(20) DEFAULT null,
 total_arts int(10) DEFAULT '0',
 primary key(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+## art类别
+create table y_art_tag(
+id int(11) unsigned not null auto_increment,
+typeName varchar(100) default null,
+count int(10),
+type int(4),
+primary key (id)
+)ENGINE=InnoDB DEFAULT CHARSET=UTF8;

@@ -10,7 +10,7 @@ public class ArtTypeBean {
     private String typeName;
     private int type;
 
-    public ArtTypeBean(int count, String typeName,int type ) {
+    public ArtTypeBean(int count, String typeName, int type) {
         this.count = count;
         this.typeName = typeName;
         this.type = type;
