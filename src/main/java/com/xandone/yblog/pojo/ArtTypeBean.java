@@ -1,14 +1,18 @@
 package com.xandone.yblog.pojo;
 
+import java.io.Serializable;
+
 /**
  * @author ：xandone
  * created on  ：2019/12/20 10:03
  * description：
  */
-public class ArtTypeBean {
+public class ArtTypeBean implements Serializable {
     private int count;
     private String typeName;
     private int type;
+
+    public ArtTypeBean(){}
 
     public ArtTypeBean(int count, String typeName, int type) {
         this.count = count;

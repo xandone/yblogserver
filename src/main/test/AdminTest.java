@@ -1,11 +1,16 @@
+import com.alibaba.druid.support.json.JSONUtils;
 import com.xandone.yblog.mapper.*;
 import com.xandone.yblog.pojo.*;
 import com.xandone.yblog.utils.IDUtils;
+import com.xandone.yblog.utils.JsonUtils;
 import org.junit.Test;
+import org.noggit.JSONUtil;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class AdminTest {
     @Test
@@ -93,17 +98,32 @@ public class AdminTest {
         mapper.addAdmin(adminBean);
     }
 
-
     @Test
     public void addArtTag() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
-        ArtTagMapper mapper = context.getBean(ArtTagMapper.class);
+//        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
+//        ArtTagMapper mapper = context.getBean(ArtTagMapper.class);
+//
+//        ArtTypeBean artTypeBean = new ArtTypeBean(
+//                0,
+//                "Java",
+//                2);
+//
+//        mapper.addType(artTypeBean);
 
         ArtTypeBean artTypeBean = new ArtTypeBean(
-                4,
-                "Android",
-                1);
+                0,
+                "Java",
+                2);
 
-        mapper.addType(artTypeBean);
+        ArtTypeBean artTypeBean2 = new ArtTypeBean(
+                0,
+                "全部",
+                16);
+
+        List<ArtTypeBean> list = new ArrayList<>();
+        list.add(artTypeBean2);
+        list.add(artTypeBean);
+
+        System.out.println(JsonUtils.obj2Json(list));
     }
 }

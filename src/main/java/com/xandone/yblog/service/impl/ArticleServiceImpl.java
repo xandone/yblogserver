@@ -90,10 +90,14 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public List<ArtTypeBean> getArtCountAllType() {
         List<ArtTypeBean> list = new ArrayList<>();
+        int total = 0;
         for (int i = 0; i < ART_TYPE.length; i++) {
-            ArtTypeBean artTypeBean = new ArtTypeBean(articleMapper.getArtCountByType(i), ART_TYPE[i], i - 1);
+            int count = articleMapper.getArtCountByType(i);
+            ArtTypeBean artTypeBean = new ArtTypeBean(count, ART_TYPE[i], i);
             list.add(artTypeBean);
+            total += count;
         }
+        list.add(0, new ArtTypeBean(total, "全部", -1));
         return list;
     }
 
