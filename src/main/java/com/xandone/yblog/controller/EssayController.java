@@ -2,7 +2,8 @@ package com.xandone.yblog.controller;
 
 import com.xandone.yblog.common.BaseListResult;
 import com.xandone.yblog.common.BaseResult;
-import com.xandone.yblog.common.ReturnCode;
+import com.xandone.yblog.common.IReturnCode;
+import com.xandone.yblog.exception.NoImageException;
 import com.xandone.yblog.pojo.EssayBean;
 import com.xandone.yblog.service.EssayService;
 import com.xandone.yblog.utils.SimpleUtils;
@@ -40,12 +41,12 @@ public class EssayController {
             List<EssayBean> list = new ArrayList<>();
             list.add(essayBean);
             baseResult.setData(list);
-            baseResult.setCode(ReturnCode.SUCCESS);
+            baseResult.setCode(IReturnCode.SUCCESS);
 
         } catch (
                 Exception e) {
             e.printStackTrace();
-            baseResult.setCode(ReturnCode.ERROR_CODE);
+            baseResult.setCode(IReturnCode.ERROR_CODE);
             return baseResult;
         }
 
@@ -62,15 +63,15 @@ public class EssayController {
         try {
             BaseListResult result = essayService.getEssayList(page, row, tag);
             if (result != null) {
-                result.setCode(ReturnCode.SUCCESS);
-                result.setMsg(ReturnCode.MES_REQUEST_SUCCESS);
+                result.setCode(IReturnCode.SUCCESS);
+                result.setMsg(IReturnCode.MES_REQUEST_SUCCESS);
                 return result;
             }
-            baseResult.setCode(ReturnCode.ERROR_CODE);
+            baseResult.setCode(IReturnCode.ERROR_CODE);
         } catch (Exception e) {
             e.printStackTrace();
-            baseResult.setCode(ReturnCode.ERROR_CODE);
-            baseResult.setMsg(ReturnCode.MES_SERVER_ERROR);
+            baseResult.setCode(IReturnCode.ERROR_CODE);
+            baseResult.setMsg(IReturnCode.MES_SERVER_ERROR);
         }
         return baseResult;
     }
@@ -88,13 +89,13 @@ public class EssayController {
             List<EssayBean> list = new ArrayList<>();
             list.add(essayBean);
             baseResult.setData(list);
-            baseResult.setCode(ReturnCode.SUCCESS);
-            baseResult.setMsg(ReturnCode.MES_REQUEST_SUCCESS);
+            baseResult.setCode(IReturnCode.SUCCESS);
+            baseResult.setMsg(IReturnCode.MES_REQUEST_SUCCESS);
             return baseResult;
         } catch (Exception e) {
             e.printStackTrace();
-            baseResult.setCode(ReturnCode.ERROR_CODE);
-            baseResult.setMsg(ReturnCode.MES_SERVER_ERROR);
+            baseResult.setCode(IReturnCode.ERROR_CODE);
+            baseResult.setMsg(IReturnCode.MES_SERVER_ERROR);
         }
         return baseResult;
     }
@@ -107,12 +108,17 @@ public class EssayController {
         try {
             EssayBean essayBean = SimpleUtils.json2Pojo(jsonEssay, EssayBean.class);
             essayService.setEssayAsBanner(essayBean);
-            baseResult.setCode(ReturnCode.SUCCESS);
+            baseResult.setCode(IReturnCode.SUCCESS);
             return baseResult;
         } catch (Exception e) {
             e.printStackTrace();
-            baseResult.setCode(ReturnCode.ERROR_CODE);
-            baseResult.setMsg(ReturnCode.MES_SERVER_ERROR);
+            if (e instanceof NoImageException) {
+                baseResult.setCode(IReturnCode.ERROR_NO_IMAGE_CODE);
+                baseResult.setMsg(IReturnCode.MES_NO_IMAGE);
+            } else {
+                baseResult.setCode(IReturnCode.ERROR_CODE);
+                baseResult.setMsg(IReturnCode.MES_SERVER_ERROR);
+            }
         }
         return baseResult;
     }

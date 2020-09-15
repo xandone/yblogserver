@@ -3,10 +3,8 @@ package com.xandone.yblog.controller;
 import com.xandone.yblog.common.BaseListResult;
 import com.xandone.yblog.common.BaseResult;
 import com.xandone.yblog.common.Config;
-import com.xandone.yblog.common.ReturnCode;
-import com.xandone.yblog.pojo.ArticleBean;
+import com.xandone.yblog.common.IReturnCode;
 import com.xandone.yblog.pojo.CommentBean;
-import com.xandone.yblog.service.ArticleService;
 import com.xandone.yblog.service.CommentService;
 import com.xandone.yblog.utils.IDUtils;
 import org.apache.http.util.TextUtils;
@@ -48,7 +46,7 @@ public class CommetController {
             List<CommentBean> dataList = new ArrayList<>();
 
 //            if (TextUtils.isEmpty(userId)) {
-//                baseResult.setCode(ReturnCode.ERROR_CODE);
+//                baseResult.setCode(IReturnCode.ERROR_CODE);
 //                return baseResult;
 //            }
             CommentBean commentBean = new CommentBean();
@@ -60,7 +58,7 @@ public class CommetController {
             commentBean.setCommentDate(new Date());
 
             commentService.addComment(commentBean);
-            baseResult.setCode(ReturnCode.SUCCESS);
+            baseResult.setCode(IReturnCode.SUCCESS);
             dataList.add(commentBean);
             baseResult.setData(dataList);
 
@@ -68,7 +66,7 @@ public class CommetController {
             return baseResult;
         } catch (Exception e) {
             e.printStackTrace();
-            baseResult.setCode(ReturnCode.ERROR_CODE);
+            baseResult.setCode(IReturnCode.ERROR_CODE);
             return baseResult;
         }
     }
@@ -82,15 +80,15 @@ public class CommetController {
         try {
             BaseListResult result = commentService.getAllArtCommentById(page, row, artId);
             if (result != null) {
-                result.setCode(ReturnCode.SUCCESS);
-                result.setMsg(ReturnCode.MES_REQUEST_SUCCESS);
+                result.setCode(IReturnCode.SUCCESS);
+                result.setMsg(IReturnCode.MES_REQUEST_SUCCESS);
                 return result;
             }
-            baseResult.setCode(ReturnCode.ERROR_CODE);
+            baseResult.setCode(IReturnCode.ERROR_CODE);
         } catch (Exception e) {
             e.printStackTrace();
-            baseResult.setCode(ReturnCode.ERROR_CODE);
-            baseResult.setMsg(ReturnCode.MES_SERVER_ERROR);
+            baseResult.setCode(IReturnCode.ERROR_CODE);
+            baseResult.setMsg(IReturnCode.MES_SERVER_ERROR);
         }
         return baseResult;
     }

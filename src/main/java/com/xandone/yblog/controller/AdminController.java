@@ -2,7 +2,7 @@ package com.xandone.yblog.controller;
 
 import com.xandone.yblog.common.BaseResult;
 import com.xandone.yblog.common.Config;
-import com.xandone.yblog.common.ReturnCode;
+import com.xandone.yblog.common.IReturnCode;
 import com.xandone.yblog.pojo.AdminBean;
 import com.xandone.yblog.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,16 +38,16 @@ public class AdminController {
             adminBean = adminService.getAdminByName(name);
             if (adminBean == null) {
                 baseResult.setMsg("不存在该用户");
-                baseResult.setCode(ReturnCode.ERROR_CODE);
+                baseResult.setCode(IReturnCode.ERROR_CODE);
                 return baseResult;
             } else if (!adminBean.getPassword().equals(psw)) {
                 baseResult.setMsg("密码错误");
-                baseResult.setCode(ReturnCode.ERROR_CODE);
+                baseResult.setCode(IReturnCode.ERROR_CODE);
                 return baseResult;
             } else {
                 list.add(adminBean);
                 baseResult.setData(list);
-                baseResult.setCode(ReturnCode.SUCCESS);
+                baseResult.setCode(IReturnCode.SUCCESS);
                 baseResult.setMsg("登录成功");
 
                 adminBean.setLastLoginTime(new Date());
@@ -55,8 +55,8 @@ public class AdminController {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            baseResult.setMsg(ReturnCode.MES_SERVER_ERROR);
-            baseResult.setCode(ReturnCode.ERROR_CODE);
+            baseResult.setMsg(IReturnCode.MES_SERVER_ERROR);
+            baseResult.setCode(IReturnCode.ERROR_CODE);
         }
         return baseResult;
     }
@@ -71,12 +71,12 @@ public class AdminController {
             AdminBean userBean = adminService.getAdminById(Config.ADMIN_ID);
             list.add(userBean);
             baseResult.setData(list);
-            baseResult.setCode(ReturnCode.SUCCESS);
-            baseResult.setMsg(ReturnCode.MES_REQUEST_SUCCESS);
+            baseResult.setCode(IReturnCode.SUCCESS);
+            baseResult.setMsg(IReturnCode.MES_REQUEST_SUCCESS);
         } catch (Exception e) {
             e.printStackTrace();
-            baseResult.setCode(ReturnCode.ERROR_CODE);
-            baseResult.setMsg(ReturnCode.MES_SERVER_ERROR);
+            baseResult.setCode(IReturnCode.ERROR_CODE);
+            baseResult.setMsg(IReturnCode.MES_SERVER_ERROR);
         }
         return baseResult;
     }

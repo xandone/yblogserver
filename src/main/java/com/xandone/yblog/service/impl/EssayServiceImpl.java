@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xandone.yblog.common.BaseListResult;
 import com.xandone.yblog.common.Config;
+import com.xandone.yblog.exception.NoImageException;
 import com.xandone.yblog.mapper.BannerMapper;
 import com.xandone.yblog.mapper.CommentMapper;
 import com.xandone.yblog.mapper.EssayMapper;
@@ -13,7 +14,6 @@ import com.xandone.yblog.pojo.EssayBean;
 import com.xandone.yblog.service.EssayService;
 import com.xandone.yblog.utils.IDUtils;
 import com.xandone.yblog.utils.SimpleUtils;
-import org.apache.http.util.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -111,7 +111,7 @@ public class EssayServiceImpl implements EssayService {
         String imgJson = temp.getCoverImg();
         String[] imgs = SimpleUtils.json2Pojo(imgJson, String[].class);
         if (imgs == null || imgs.length == 0) {
-            throw new Exception("该文章无图片");
+            throw new NoImageException("该文章无图片");
         }
         BannerBean bannerBean = new BannerBean(temp.getEssayUserId(),
                 temp.getEssayId(),

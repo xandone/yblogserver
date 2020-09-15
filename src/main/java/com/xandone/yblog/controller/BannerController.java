@@ -2,7 +2,7 @@ package com.xandone.yblog.controller;
 
 import com.xandone.yblog.common.BaseResult;
 import com.xandone.yblog.common.Config;
-import com.xandone.yblog.common.ReturnCode;
+import com.xandone.yblog.common.IReturnCode;
 import com.xandone.yblog.pojo.BannerBean;
 import com.xandone.yblog.service.BannerService;
 import com.xandone.yblog.utils.IDUtils;
@@ -36,15 +36,15 @@ public class BannerController {
         try {
             BaseResult temp = bannerService.getBannerData();
             if (temp != null) {
-                temp.setCode(ReturnCode.SUCCESS);
+                temp.setCode(IReturnCode.SUCCESS);
                 return temp;
             }
         } catch (Exception e) {
             e.printStackTrace();
-            baseResult.setCode(ReturnCode.ERROR_CODE);
+            baseResult.setCode(IReturnCode.ERROR_CODE);
             return baseResult;
         }
-        baseResult.setCode(ReturnCode.ERROR_CODE);
+        baseResult.setCode(IReturnCode.ERROR_CODE);
         return baseResult;
     }
 
@@ -68,10 +68,10 @@ public class BannerController {
             List<BannerBean> list = new ArrayList<>();
             list.add(bannerBean);
             baseResult.setData(list);
-            baseResult.setCode(ReturnCode.SUCCESS);
+            baseResult.setCode(IReturnCode.SUCCESS);
         } catch (Exception e) {
             e.printStackTrace();
-            baseResult.setCode(ReturnCode.ERROR_CODE);
+            baseResult.setCode(IReturnCode.ERROR_CODE);
             return baseResult;
         }
 
@@ -86,17 +86,17 @@ public class BannerController {
             String articelId = map.get("articelId");
             String adminId = map.get("adminId");
             if (!Config.ADMIN_ID.equals(adminId)) {
-                baseResult.setCode(ReturnCode.ERROR_CODE);
+                baseResult.setCode(IReturnCode.ERROR_CODE);
                 baseResult.setMsg("没有权限");
                 return baseResult;
             }
             bannerService.deleteBannerById(articelId);
-            baseResult.setCode(ReturnCode.SUCCESS);
+            baseResult.setCode(IReturnCode.SUCCESS);
             baseResult.setMsg("删除成功");
             return baseResult;
         } catch (Exception e) {
             e.printStackTrace();
-            baseResult.setCode(ReturnCode.ERROR_CODE);
+            baseResult.setCode(IReturnCode.ERROR_CODE);
             baseResult.setMsg("删除失败");
         }
         return baseResult;

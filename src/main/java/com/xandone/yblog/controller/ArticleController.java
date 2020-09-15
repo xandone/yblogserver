@@ -2,7 +2,7 @@ package com.xandone.yblog.controller;
 
 import com.xandone.yblog.common.BaseListResult;
 import com.xandone.yblog.common.BaseResult;
-import com.xandone.yblog.common.ReturnCode;
+import com.xandone.yblog.common.IReturnCode;
 import com.xandone.yblog.pojo.ArtTypeBean;
 import com.xandone.yblog.pojo.ArticleBean;
 import com.xandone.yblog.service.ArticleService;
@@ -40,12 +40,12 @@ public class ArticleController {
             List<ArticleBean> list = new ArrayList<>();
             list.add(articleBean);
             baseResult.setData(list);
-            baseResult.setCode(ReturnCode.SUCCESS);
+            baseResult.setCode(IReturnCode.SUCCESS);
 
         } catch (
                 Exception e) {
             e.printStackTrace();
-            baseResult.setCode(ReturnCode.ERROR_CODE);
+            baseResult.setCode(IReturnCode.ERROR_CODE);
             return baseResult;
         }
 
@@ -62,15 +62,15 @@ public class ArticleController {
         try {
             BaseListResult result = articleService.getArticleList(page, row, type);
             if (result != null) {
-                result.setCode(ReturnCode.SUCCESS);
-                result.setMsg(ReturnCode.MES_REQUEST_SUCCESS);
+                result.setCode(IReturnCode.SUCCESS);
+                result.setMsg(IReturnCode.MES_REQUEST_SUCCESS);
                 return result;
             }
-            baseResult.setCode(ReturnCode.ERROR_CODE);
+            baseResult.setCode(IReturnCode.ERROR_CODE);
         } catch (Exception e) {
             e.printStackTrace();
-            baseResult.setCode(ReturnCode.ERROR_CODE);
-            baseResult.setMsg(ReturnCode.MES_SERVER_ERROR);
+            baseResult.setCode(IReturnCode.ERROR_CODE);
+            baseResult.setMsg(IReturnCode.MES_SERVER_ERROR);
         }
         return baseResult;
     }
@@ -88,13 +88,13 @@ public class ArticleController {
             List<ArticleBean> list = new ArrayList<>();
             list.add(articleBean);
             baseResult.setData(list);
-            baseResult.setCode(ReturnCode.SUCCESS);
-            baseResult.setMsg(ReturnCode.MES_REQUEST_SUCCESS);
+            baseResult.setCode(IReturnCode.SUCCESS);
+            baseResult.setMsg(IReturnCode.MES_REQUEST_SUCCESS);
             return baseResult;
         } catch (Exception e) {
             e.printStackTrace();
-            baseResult.setCode(ReturnCode.ERROR_CODE);
-            baseResult.setMsg(ReturnCode.MES_SERVER_ERROR);
+            baseResult.setCode(IReturnCode.ERROR_CODE);
+            baseResult.setMsg(IReturnCode.MES_SERVER_ERROR);
         }
         return baseResult;
     }
@@ -106,13 +106,13 @@ public class ArticleController {
         try {
             List<ArtTypeBean> list = articleService.getArtCountAllType();
             baseResult.setData(list);
-            baseResult.setCode(ReturnCode.SUCCESS);
-            baseResult.setMsg(ReturnCode.MES_REQUEST_SUCCESS);
+            baseResult.setCode(IReturnCode.SUCCESS);
+            baseResult.setMsg(IReturnCode.MES_REQUEST_SUCCESS);
             return baseResult;
         } catch (Exception e) {
             e.printStackTrace();
-            baseResult.setCode(ReturnCode.ERROR_CODE);
-            baseResult.setMsg(ReturnCode.MES_SERVER_ERROR);
+            baseResult.setCode(IReturnCode.ERROR_CODE);
+            baseResult.setMsg(IReturnCode.MES_SERVER_ERROR);
         }
         return baseResult;
     }
