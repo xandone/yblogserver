@@ -13,4 +13,6 @@ public interface CommentService {
     void addComment(CommentBean commentBean) throws Exception;
 
     BaseListResult getAllArtCommentById(Integer page, Integer row, String artId) throws Exception;
+
+    int getAllCommentCount() throws Exception;
 }

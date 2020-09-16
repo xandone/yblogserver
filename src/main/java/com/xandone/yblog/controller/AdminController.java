@@ -1,10 +1,17 @@
 package com.xandone.yblog.controller;
 
+import com.xandone.yblog.common.BaseObjResult;
 import com.xandone.yblog.common.BaseResult;
 import com.xandone.yblog.common.Config;
 import com.xandone.yblog.common.IReturnCode;
 import com.xandone.yblog.pojo.AdminBean;
+import com.xandone.yblog.pojo.ArtStatistical;
+import com.xandone.yblog.pojo.ArtTypeBean;
+import com.xandone.yblog.pojo.TypeBean;
 import com.xandone.yblog.service.AdminService;
+import com.xandone.yblog.service.ArticleService;
+import com.xandone.yblog.service.CommentService;
+import com.xandone.yblog.service.EssayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +32,12 @@ import java.util.Map;
 public class AdminController {
     @Autowired
     private AdminService adminService;
+    @Autowired
+    ArticleService articleService;
+    @Autowired
+    EssayService essayService;
+    @Autowired
+    CommentService commentService;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
@@ -73,6 +86,33 @@ public class AdminController {
             baseResult.setData(list);
             baseResult.setCode(IReturnCode.SUCCESS);
             baseResult.setMsg(IReturnCode.MES_REQUEST_SUCCESS);
+        } catch (Exception e) {
+            e.printStackTrace();
+            baseResult.setCode(IReturnCode.ERROR_CODE);
+            baseResult.setMsg(IReturnCode.MES_SERVER_ERROR);
+        }
+        return baseResult;
+    }
+
+    @RequestMapping(value = "/artInfo")
+    @ResponseBody
+    public BaseObjResult getArtTypeList(@RequestParam(value = "adminId") String adminId) {
+        BaseObjResult<ArtStatistical> baseResult = new BaseObjResult<>();
+        try {
+
+            List<ArtTypeBean> artTypeBeans = articleService.getArtCountAllType();
+            List<TypeBean> typeBeans = new ArrayList<>();
+            TypeBean art = articleService.getAllArtCount();
+            TypeBean essay = essayService.getAllEssayCount();
+            typeBeans.add(art);
+            typeBeans.add(essay);
+
+            ArtStatistical statistical = new ArtStatistical(typeBeans, artTypeBeans);
+            statistical.setCommentCounts(commentService.getAllCommentCount());
+            baseResult.setData(statistical);
+            baseResult.setCode(IReturnCode.SUCCESS);
+            baseResult.setMsg(IReturnCode.MES_REQUEST_SUCCESS);
+            return baseResult;
         } catch (Exception e) {
             e.printStackTrace();
             baseResult.setCode(IReturnCode.ERROR_CODE);

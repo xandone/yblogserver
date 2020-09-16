@@ -78,4 +78,8 @@
         where essay_id = #{essayId}
     </update>
 
+    <select id="getAllEssayCount" resultType="java.lang.Integer">
+        select count(*) from y_essay
+    </select>
+
 </mapper>

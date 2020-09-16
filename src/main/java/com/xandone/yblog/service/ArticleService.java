@@ -1,6 +1,7 @@
 package com.xandone.yblog.service;
 
 import com.xandone.yblog.common.BaseListResult;
+import com.xandone.yblog.pojo.TypeBean;
 import com.xandone.yblog.pojo.ArtTypeBean;
 import com.xandone.yblog.pojo.ArticleBean;
 
@@ -24,4 +25,6 @@ public interface ArticleService {
     List<ArtTypeBean> getArtCountAllType();
 
     ArticleBean editArticle(Map<String, Object> map) throws Exception;
+
+    TypeBean getAllArtCount() throws Exception;
 }

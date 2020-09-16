@@ -14,5 +14,6 @@ public interface CommentMapper {
 
     List<CommentBean> getAllArtCommentById(String artId);
 
+    int getAllCommentCount();
 
 }

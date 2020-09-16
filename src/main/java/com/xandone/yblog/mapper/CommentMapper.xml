@@ -35,4 +35,8 @@
         select * from
         y_art_comment where art_id = #{artId} order by id asc
     </select>
+
+    <select id="getAllCommentCount" resultType="java.lang.Integer">
+        select count(*) from y_art_comment
+    </select>
 </mapper>

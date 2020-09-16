@@ -20,4 +20,6 @@ public interface EssayMapper {
 
     void editEssay(EssayBean essayBean);
 
+    int getAllEssayCount();
+
 }

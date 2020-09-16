@@ -23,4 +23,6 @@ public interface ArticleMapper {
     int getArtCountByType(int type);
 
     void editArticle(ArticleBean articleBean);
+
+    int getAllArtCount();
 }

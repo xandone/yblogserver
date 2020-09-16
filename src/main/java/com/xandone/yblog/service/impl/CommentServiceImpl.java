@@ -37,5 +37,10 @@ public class CommentServiceImpl implements CommentService {
         return base;
     }
 
+    @Override
+    public int getAllCommentCount() throws Exception{
+        return commentMapper.getAllCommentCount();
+    }
+
 
 }

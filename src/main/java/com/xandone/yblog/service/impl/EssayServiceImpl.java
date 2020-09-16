@@ -8,6 +8,7 @@ import com.xandone.yblog.exception.NoImageException;
 import com.xandone.yblog.mapper.BannerMapper;
 import com.xandone.yblog.mapper.CommentMapper;
 import com.xandone.yblog.mapper.EssayMapper;
+import com.xandone.yblog.pojo.TypeBean;
 import com.xandone.yblog.pojo.BannerBean;
 import com.xandone.yblog.pojo.CommentBean;
 import com.xandone.yblog.pojo.EssayBean;
@@ -123,6 +124,11 @@ public class EssayServiceImpl implements EssayService {
         );
         bannerMapper.addBanner(bannerBean);
         essayMapper.editEssay(essayBean);
+    }
+
+    @Override
+    public TypeBean getAllEssayCount() throws Exception {
+        return new TypeBean("杂文", essayMapper.getAllEssayCount());
     }
 
     private EssayBean dealComment(EssayBean bean) throws Exception {

@@ -6,6 +6,7 @@ import com.xandone.yblog.common.BaseListResult;
 import com.xandone.yblog.common.Config;
 import com.xandone.yblog.mapper.ArticleMapper;
 import com.xandone.yblog.mapper.CommentMapper;
+import com.xandone.yblog.pojo.TypeBean;
 import com.xandone.yblog.pojo.ArtTypeBean;
 import com.xandone.yblog.pojo.ArticleBean;
 import com.xandone.yblog.pojo.CommentBean;
@@ -116,6 +117,11 @@ public class ArticleServiceImpl implements ArticleService {
         articleMapper.editArticle(articleBean);
 
         return articleBean;
+    }
+
+    @Override
+    public TypeBean getAllArtCount() throws Exception {
+        return new TypeBean("编程", articleMapper.getAllArtCount());
     }
 
     private ArticleBean dealComment(ArticleBean bean) throws Exception {

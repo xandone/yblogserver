@@ -1,6 +1,7 @@
 package com.xandone.yblog.service;
 
 import com.xandone.yblog.common.BaseListResult;
+import com.xandone.yblog.pojo.TypeBean;
 import com.xandone.yblog.pojo.EssayBean;
 
 import java.util.Map;
@@ -22,4 +23,6 @@ public interface EssayService {
     EssayBean editEssay(Map<String, Object> map) throws Exception;
 
     void setEssayAsBanner(EssayBean essayBean) throws Exception;
+
+    TypeBean getAllEssayCount() throws Exception;
 }
