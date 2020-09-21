@@ -1,6 +1,7 @@
 import com.alibaba.druid.support.json.JSONUtils;
 import com.xandone.yblog.mapper.*;
 import com.xandone.yblog.pojo.*;
+import com.xandone.yblog.utils.DateUtils;
 import com.xandone.yblog.utils.IDUtils;
 import com.xandone.yblog.utils.JsonUtils;
 import org.junit.Test;
@@ -9,6 +10,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -125,5 +127,16 @@ public class AdminTest {
         list.add(artTypeBean);
 
         System.out.println(JsonUtils.obj2Json(list));
+    }
+
+    @Test
+    public void testCount() {
+        String start = "2019-1-1";
+        String end = DateUtils.getNextHeadYear();
+        System.out.println(start + "    " + end);
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
+        AdminMapper mapper = context.getBean(AdminMapper.class);
+        int count = mapper.getEssayYearCount(start, end);
+        System.out.println(count + "");
     }
 }

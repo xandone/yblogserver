@@ -2,6 +2,9 @@ package com.xandone.yblog.service;
 
 
 import com.xandone.yblog.pojo.AdminBean;
+import com.xandone.yblog.pojo.YearArtData;
+
+import java.util.List;
 
 /**
  * @author ：xandone
@@ -15,5 +18,7 @@ public interface AdminService {
     void updateAdmin(AdminBean adminBean) throws Exception;
 
     AdminBean getAdminById(String userId) throws Exception;
+
+    List<YearArtData> getArtYearData() throws Exception;
 
 }

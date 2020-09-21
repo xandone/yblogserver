@@ -4,10 +4,7 @@ import com.xandone.yblog.common.BaseObjResult;
 import com.xandone.yblog.common.BaseResult;
 import com.xandone.yblog.common.Config;
 import com.xandone.yblog.common.IReturnCode;
-import com.xandone.yblog.pojo.AdminBean;
-import com.xandone.yblog.pojo.ArtStatistical;
-import com.xandone.yblog.pojo.ArtTypeBean;
-import com.xandone.yblog.pojo.TypeBean;
+import com.xandone.yblog.pojo.*;
 import com.xandone.yblog.service.AdminService;
 import com.xandone.yblog.service.ArticleService;
 import com.xandone.yblog.service.CommentService;
@@ -99,8 +96,8 @@ public class AdminController {
     public BaseObjResult getArtTypeList(@RequestParam(value = "adminId") String adminId) {
         BaseObjResult<ArtStatistical> baseResult = new BaseObjResult<>();
         try {
-
             List<ArtTypeBean> artTypeBeans = articleService.getArtCountAllType();
+            List<YearArtData> yearArtData = adminService.getArtYearData();
             List<TypeBean> typeBeans = new ArrayList<>();
             TypeBean art = articleService.getAllArtCount();
             TypeBean essay = essayService.getAllEssayCount();
@@ -109,6 +106,8 @@ public class AdminController {
 
             ArtStatistical statistical = new ArtStatistical(typeBeans, artTypeBeans);
             statistical.setCommentCounts(commentService.getAllCommentCount());
+            statistical.setYearArtData(yearArtData);
+
             baseResult.setData(statistical);
             baseResult.setCode(IReturnCode.SUCCESS);
             baseResult.setMsg(IReturnCode.MES_REQUEST_SUCCESS);

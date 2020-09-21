@@ -10,6 +10,7 @@ import java.util.List;
 public class ArtStatistical {
     private List<TypeBean> typeBeans;
     private List<ArtTypeBean> artTypeBeans;
+    private List<YearArtData> yearArtData;
     private int commentCounts;
 
     public ArtStatistical(List<TypeBean> typeBeans, List<ArtTypeBean> artTypeBeans) {
@@ -31,6 +32,14 @@ public class ArtStatistical {
 
     public void setArtTypeBeans(List<ArtTypeBean> artTypeBeans) {
         this.artTypeBeans = artTypeBeans;
+    }
+
+    public List<YearArtData> getYearArtData() {
+        return yearArtData;
+    }
+
+    public void setYearArtData(List<YearArtData> yearArtData) {
+        this.yearArtData = yearArtData;
     }
 
     public int getCommentCounts() {
