@@ -20,16 +20,8 @@ public class Constant {
             "Canvas",
             "Game"};
 
-//    public static final String json = "[" +
-//            "{\"count\":0,\"typeName\":\"全部\",\"type\":16}," +
-//            "{\"count\":0,\"typeName\":\"编程\",\"type\":2}" +
-//            "{\"count\":0,\"typeName\":\"Android\",\"type\":2}" +
-//            "{\"count\":0,\"typeName\":\"Java\",\"type\":2}" +
-//            "{\"count\":0,\"typeName\":\"前端\",\"type\":2}" +
-//            "{\"count\":0,\"typeName\":\"设计模式\",\"type\":2}" +
-//            "{\"count\":0,\"typeName\":\"算法\",\"type\":2}" +
-//            "{\"count\":0,\"typeName\":\"Python\",\"type\":2}" +
-//            "{\"count\":0,\"typeName\":\"Canvas\",\"type\":2}" +
-//            "{\"count\":0,\"typeName\":\"Game\",\"type\":2}" +
-//            "]";
+    public static final String STATR_BLOG_DATE = "2012-1-1";
+
+    public static final String BLOG_TYPE_CODE = "code";
+    public static final String BLOG_TYPE_ESSAY = "杂文";
 }
