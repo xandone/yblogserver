@@ -38,12 +38,11 @@ public class AdminController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
-    public BaseResult login(@RequestBody Map<String, String> map) {
+    public BaseResult login(@RequestParam(value = "name") String name,
+                            @RequestParam(value = "psw") String psw) {
         BaseResult baseResult = new BaseResult();
         List<AdminBean> list = new ArrayList<>();
-        AdminBean adminBean = null;
-        String name = map.get("name");
-        String psw = map.get("psw");
+        AdminBean adminBean;
         try {
             adminBean = adminService.getAdminByName(name);
             if (adminBean == null) {
