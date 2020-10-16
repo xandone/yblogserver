@@ -29,10 +29,10 @@ public class TokenUtils {
     private static final String signkey = "@#$FD7H8@";
 
     /**
-     * 过期时间,一天
+     * 过期时间,3天
      */
 //    private static final int EXPIRES_DATE = 60;
-    private static final int EXPIRES_DATE = 60 * 60 * 24;
+    private static final int EXPIRES_DATE = 60 * 60 * 24 * 3;
 
     /**
      * The constant algorithm .
