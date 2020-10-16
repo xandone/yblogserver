@@ -31,8 +31,8 @@ public class TokenUtils {
     /**
      * 过期时间,一天
      */
-    private static final int EXPIRES_DATE = 60;
-//    private static final int EXPIRES_DATE = 60 * 60 * 24;
+//    private static final int EXPIRES_DATE = 60;
+    private static final int EXPIRES_DATE = 60 * 60 * 24;
 
     /**
      * The constant algorithm .
