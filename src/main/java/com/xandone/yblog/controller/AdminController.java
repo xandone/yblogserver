@@ -9,14 +9,15 @@ import com.xandone.yblog.service.AdminService;
 import com.xandone.yblog.service.ArticleService;
 import com.xandone.yblog.service.CommentService;
 import com.xandone.yblog.service.EssayService;
+import com.xandone.yblog.utils.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -30,11 +31,13 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
     @Autowired
-    ArticleService articleService;
+    private ArticleService articleService;
     @Autowired
-    EssayService essayService;
+    private EssayService essayService;
     @Autowired
-    CommentService commentService;
+    private CommentService commentService;
+    @Autowired
+    private HttpServletRequest request;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
@@ -54,6 +57,7 @@ public class AdminController {
                 baseResult.setCode(IReturnCode.ERROR_CODE);
                 return baseResult;
             } else {
+                adminBean.setToken(TokenUtils.getToken(adminBean.getAdminId()));
                 list.add(adminBean);
                 baseResult.setData(list);
                 baseResult.setCode(IReturnCode.SUCCESS);
@@ -95,6 +99,12 @@ public class AdminController {
     public BaseObjResult getArtTypeList(@RequestParam(value = "adminId") String adminId) {
         BaseObjResult<ArtStatistical> baseResult = new BaseObjResult<>();
         try {
+            String token = request.getHeader("token");
+            if (!TokenUtils.verifyToken(token)) {
+                baseResult.setCode(IReturnCode.ERROR_TOKEN_CODE);
+                baseResult.setMsg(IReturnCode.MES_ERROR_TOKEN);
+                return baseResult;
+            }
             List<ArtTypeBean> artTypeBeans = articleService.getArtCountAllType();
             List<YearArtData> yearArtData = adminService.getArtYearData();
             List<TypeBean> typeBeans = new ArrayList<>();

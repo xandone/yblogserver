@@ -205,6 +205,12 @@
             <artifactId>qiniu-java-sdk</artifactId>
             <version>7.0.9</version>
         </dependency>
+        <!--jwt-->
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>3.8.2</version>
+        </dependency>
     </dependencies>
 
     <build>

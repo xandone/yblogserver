@@ -15,12 +15,12 @@ public class AdminBean {
     private String nickname;
     private String adminId;
     private String adminIcon;
-    private String token;
     private String permission;
     private int totalArts;
     private String email;
     private Date registTime;
     private Date lastLoginTime;
+    private String token;
 
     public AdminBean() {
 

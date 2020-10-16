@@ -11,7 +11,6 @@
         <result column="admin_id" property="adminId" jdbcType="VARCHAR"/>
         <result column="admin_icon" property="adminIcon" jdbcType="VARCHAR"/>
         <result column="permission" property="permission" jdbcType="VARCHAR"/>
-        <result column="token" property="token" jdbcType="VARCHAR"/>
         <result column="regist_time" property="registTime" jdbcType="TIMESTAMP"/>
         <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP"/>
         <result column="admin_icon" property="adminIcon" jdbcType="VARCHAR"/>
@@ -39,7 +38,6 @@
             <if test="adminId != null">admin_id = #{adminId,jdbcType=VARCHAR},</if>
             <if test="adminIcon != null">admin_icon = #{adminIcon,jdbcType=VARCHAR},</if>
             <if test="permission != null">permission = #{permission,jdbcType=VARCHAR},</if>
-            <if test="token != null">token = #{token,jdbcType=VARCHAR},</if>
             <if test="registTime != null">regist_time = #{registTime,jdbcType=TIMESTAMP},</if>
             <if test="lastLoginTime != null">last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},</if>
             <if test="totalArts != null">total_arts = #{totalArts,jdbcType=INTEGER},</if>
