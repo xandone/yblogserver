@@ -17,6 +17,8 @@ public class AdminBean {
     private String adminIcon;
     private String permission;
     private int totalArts;
+    private int artCounts;
+    private int essayCounts;
     private String email;
     private Date registTime;
     private Date lastLoginTime;
@@ -122,6 +124,22 @@ public class AdminBean {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getArtCounts() {
+        return artCounts;
+    }
+
+    public void setArtCounts(int artCounts) {
+        this.artCounts = artCounts;
+    }
+
+    public int getEssayCounts() {
+        return essayCounts;
+    }
+
+    public void setEssayCounts(int essayCounts) {
+        this.essayCounts = essayCounts;
     }
 
     @Override

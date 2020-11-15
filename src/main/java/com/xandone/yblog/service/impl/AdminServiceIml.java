@@ -37,7 +37,11 @@ public class AdminServiceIml implements AdminService {
     @Override
     public AdminBean getAdminById(String userId) throws Exception {
         AdminBean adminBean = adminMapper.getAdminById(userId);
-        adminBean.setTotalArts(adminMapper.getArtCount() + adminMapper.getEssayCount());
+        int arts = adminMapper.getArtCount();
+        int essays = adminMapper.getEssayCount();
+        adminBean.setArtCounts(arts);
+        adminBean.setEssayCounts(essays);
+        adminBean.setTotalArts(arts + essays);
         return adminBean;
     }
 
