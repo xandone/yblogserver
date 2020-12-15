@@ -9,6 +9,9 @@
         <result column="art_id" property="artId" jdbcType="VARCHAR"/>
         <result column="comment_user_id" property="commentUserId" jdbcType="VARCHAR"/>
         <result column="comment_details" property="commentDetails" jdbcType="VARCHAR"/>
+        <result column="nickname" property="nickname" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="visitor_url" property="visitorUrl" jdbcType="VARCHAR"/>
         <result column="comment_user_ver" property="commentUserVer" jdbcType="VARCHAR"/>
         <result column="comment_date" property="commentDate" jdbcType="TIMESTAMP"/>
     </resultMap>
@@ -20,6 +23,9 @@
         art_id,
         comment_user_id,
         comment_details,
+        nickname,
+        email,
+        visitor_url,
         comment_user_ver,
         comment_date)
         values(
@@ -27,6 +33,9 @@
         #{artId},
         #{commentUserId},
         #{commentDetails},
+        #{nickname},
+        #{email},
+        #{visitorUrl},
         #{commentUserVer},
         #{commentDate})
     </insert>

@@ -37,6 +37,9 @@ public class CommetController {
     @ResponseBody
     public BaseResult addComment(@RequestParam(value = "artId") String artId,
                                  @RequestParam(value = "details") String details,
+                                 @RequestParam(value = "nickname") String nickname,
+                                 @RequestParam(value = "email") String email,
+                                 String visitorUrl,
                                  String commentUserVer) {
         BaseResult baseResult = new BaseResult();
         try {
@@ -54,6 +57,9 @@ public class CommetController {
             commentBean.setArtId(artId);
             commentBean.setCommentUserId(Config.USER_DEFAULT_ID);
             commentBean.setCommentDetails(details);
+            commentBean.setNickname(nickname);
+            commentBean.setEmail(email);
+            commentBean.setVisitorUrl(visitorUrl);
             commentBean.setCommentUserVer(TextUtils.isEmpty(commentUserVer) ? "未知" : commentUserVer);
             commentBean.setCommentDate(new Date());
 

@@ -14,6 +14,9 @@ public class CommentBean {
     private String artId;
     private String commentUserId;
     private String commentDetails;
+    private String nickname;
+    private String email;
+    private String visitorUrl;
     private String commentUserVer;
     private Date commentDate;
 
@@ -83,5 +86,29 @@ public class CommentBean {
 
     public void setCommentUserVer(String commentUserVer) {
         this.commentUserVer = commentUserVer;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getVisitorUrl() {
+        return visitorUrl;
+    }
+
+    public void setVisitorUrl(String visitorUrl) {
+        this.visitorUrl = visitorUrl;
     }
 }
