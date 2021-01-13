@@ -3,9 +3,12 @@ package com.xandone.yblog.service.impl;
 import com.xandone.yblog.config.Constant;
 import com.xandone.yblog.mapper.AdminMapper;
 import com.xandone.yblog.pojo.AdminBean;
+import com.xandone.yblog.pojo.LogsBean;
+import com.xandone.yblog.pojo.ProjectLogBean;
 import com.xandone.yblog.pojo.YearArtData;
 import com.xandone.yblog.service.AdminService;
 import com.xandone.yblog.utils.DateUtils;
+import com.xandone.yblog.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,4 +63,21 @@ public class AdminServiceIml implements AdminService {
         }
         return list;
     }
+
+    @Override
+    public void addLog(ProjectLogBean bean) throws Exception {
+        adminMapper.addLog(bean);
+    }
+
+    @Override
+    public List<LogsBean> getLogs() throws Exception {
+        List<LogsBean> logsBeans = new ArrayList<>();
+        List<ProjectLogBean> list = adminMapper.getLogs();
+        for (ProjectLogBean bean : list) {
+            LogsBean myBean = new LogsBean(bean.getCreateTime(), JsonUtils.<String>json2List(bean.getData(), List.class));
+            logsBeans.add(myBean);
+        }
+        return logsBeans;
+    }
+
 }

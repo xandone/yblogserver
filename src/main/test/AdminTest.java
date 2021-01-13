@@ -1,16 +1,13 @@
-import com.alibaba.druid.support.json.JSONUtils;
 import com.xandone.yblog.mapper.*;
 import com.xandone.yblog.pojo.*;
 import com.xandone.yblog.utils.DateUtils;
 import com.xandone.yblog.utils.IDUtils;
 import com.xandone.yblog.utils.JsonUtils;
 import org.junit.Test;
-import org.noggit.JSONUtil;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -138,5 +135,19 @@ public class AdminTest {
         AdminMapper mapper = context.getBean(AdminMapper.class);
         int count = mapper.getEssayYearCount(start, end);
         System.out.println(count + "");
+    }
+
+    @Test
+    public void addLog() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
+        AdminMapper mapper = context.getBean(AdminMapper.class);
+//        List<String> list = new ArrayList<>();
+//        list.add("1111汇顶科技很过分肯定会给对方");
+//        list.add("222222汇顶科技很过分肯定会给对方");
+//        String str = JsonUtils.obj2Json(list);
+//        mapper.addLog(new ProjectLogBean("2018-10-03", str));
+
+        List<ProjectLogBean> logBeans = mapper.getLogs();
+        System.out.println(JsonUtils.obj2Json(logBeans));
     }
 }

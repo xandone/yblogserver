@@ -84,3 +84,11 @@ count int(10),
 type int(4),
 primary key (id)
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+## 项目更新日志
+CREATE TABLE y_project_log(
+id int(11) unsigned not null auto_increment,
+createTime VARCHAR(100),
+logTip VARCHAR(500),
+PRIMARY KEY (id)
+)ENGINE=INNODB DEFAULT CHARSET=utf8;

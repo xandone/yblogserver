@@ -11,6 +11,7 @@ public class ArtStatistical {
     private List<TypeBean> typeBeans;
     private List<ArtTypeBean> artTypeBeans;
     private List<YearArtData> yearArtData;
+    private List<LogsBean> logBeans;
     private int commentCounts;
 
     public ArtStatistical(List<TypeBean> typeBeans, List<ArtTypeBean> artTypeBeans) {
@@ -48,5 +49,13 @@ public class ArtStatistical {
 
     public void setCommentCounts(int commentCounts) {
         this.commentCounts = commentCounts;
+    }
+
+    public List<LogsBean> getLogBeans() {
+        return logBeans;
+    }
+
+    public void setLogBeans(List<LogsBean> logBeans) {
+        this.logBeans = logBeans;
     }
 }

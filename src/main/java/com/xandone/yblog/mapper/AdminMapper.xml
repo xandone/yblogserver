@@ -18,6 +18,11 @@
         <result column="email" property="email" jdbcType="VARCHAR"/>
     </resultMap>
 
+    <resultMap id="projectBean" type="com.xandone.yblog.pojo.ProjectLogBean">
+        <result column="createTime" property="createTime" jdbcType="VARCHAR"/>
+        <result column="logTip" property="data" jdbcType="VARCHAR"/>
+    </resultMap>
+
     <insert id="addAdmin" parameterType="com.xandone.yblog.pojo.AdminBean">
         insert into y_admin
         (name,password,nickname,admin_id,regist_time,total_arts,email) values
@@ -82,6 +87,20 @@
                 <![CDATA[  and DATE_FORMAT(post_time, '%Y-%m-%d') <= DATE_FORMAT(#{endTime}, '%Y-%m-%d')    ]]>
             </if>
         </where>
+    </select>
+
+    <insert id="addLog" parameterType="com.xandone.yblog.pojo.ProjectLogBean">
+        insert into y_project_log
+        (createTime,
+        logTip)
+        values(
+        #{createTime},
+        #{data})
+    </insert>
+
+    <select id="getLogs" resultMap="projectBean">
+        select * from y_project_log order by
+        id desc
     </select>
 
 </mapper>

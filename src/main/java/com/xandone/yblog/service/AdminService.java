@@ -2,6 +2,8 @@ package com.xandone.yblog.service;
 
 
 import com.xandone.yblog.pojo.AdminBean;
+import com.xandone.yblog.pojo.LogsBean;
+import com.xandone.yblog.pojo.ProjectLogBean;
 import com.xandone.yblog.pojo.YearArtData;
 
 import java.util.List;
@@ -20,5 +22,9 @@ public interface AdminService {
     AdminBean getAdminById(String userId) throws Exception;
 
     List<YearArtData> getArtYearData() throws Exception;
+
+    void addLog(ProjectLogBean bean) throws Exception;
+
+    List<LogsBean> getLogs() throws Exception;
 
 }

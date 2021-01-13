@@ -9,6 +9,7 @@ import com.xandone.yblog.service.AdminService;
 import com.xandone.yblog.service.ArticleService;
 import com.xandone.yblog.service.CommentService;
 import com.xandone.yblog.service.EssayService;
+import com.xandone.yblog.utils.JsonUtils;
 import com.xandone.yblog.utils.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -107,6 +108,7 @@ public class AdminController {
             }
             List<ArtTypeBean> artTypeBeans = articleService.getArtCountAllType();
             List<YearArtData> yearArtData = adminService.getArtYearData();
+            List<LogsBean> logBeans = adminService.getLogs();
             List<TypeBean> typeBeans = new ArrayList<>();
             TypeBean art = articleService.getAllArtCount();
             TypeBean essay = essayService.getAllEssayCount();
@@ -116,6 +118,7 @@ public class AdminController {
             ArtStatistical statistical = new ArtStatistical(typeBeans, artTypeBeans);
             statistical.setCommentCounts(commentService.getAllCommentCount());
             statistical.setYearArtData(yearArtData);
+            statistical.setLogBeans(logBeans);
 
             baseResult.setData(statistical);
             baseResult.setCode(IReturnCode.SUCCESS);
@@ -127,6 +130,23 @@ public class AdminController {
             baseResult.setMsg(IReturnCode.MES_SERVER_ERROR);
         }
         return baseResult;
+    }
+
+    @RequestMapping("/log")
+    @ResponseBody
+    public BaseObjResult addLog(@RequestParam(value = "createTime") String time,
+                                @RequestParam(value = "data") String data) {
+        try {
+//        List<String> list = JsonUtils.json2List(data, List.class);
+            ProjectLogBean logBean = new ProjectLogBean(time, data);
+
+            adminService.addLog(logBean);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+
     }
 
 
