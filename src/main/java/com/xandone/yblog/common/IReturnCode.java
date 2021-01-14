@@ -25,4 +25,5 @@ public interface IReturnCode {
     String MES_REQUEST_BANNED = "用户处于禁言状态";
     String MES_NO_IMAGE = "该文章没有图片";
     String MES_ERROR_TOKEN = "token无效";
+    String MES_HANDLE_SUCCESS = "操作成功";
 }

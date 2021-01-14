@@ -132,21 +132,22 @@ public class AdminController {
         return baseResult;
     }
 
-    @RequestMapping("/log")
+    @RequestMapping(value = "/addlog", method = RequestMethod.POST)
     @ResponseBody
-    public BaseObjResult addLog(@RequestParam(value = "createTime") String time,
-                                @RequestParam(value = "data") String data) {
-        try {
-//        List<String> list = JsonUtils.json2List(data, List.class);
-            ProjectLogBean logBean = new ProjectLogBean(time, data);
+    public BaseResult addLog(@RequestParam(value = "adminId") String adminId,
+                             @RequestParam(value = "createTime") String time,
+                             @RequestParam(value = "data") String data) {
 
+        BaseResult baseResult = new BaseResult();
+        try {
+            ProjectLogBean logBean = new ProjectLogBean(time, data);
             adminService.addLog(logBean);
+            baseResult.setCode(IReturnCode.SUCCESS);
+            baseResult.setMsg(IReturnCode.MES_HANDLE_SUCCESS);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return null;
-
+        return baseResult;
     }
 
 
