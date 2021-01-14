@@ -18,6 +18,8 @@ public interface IReturnCode {
     int ERROR_NO_IMAGE_CODE = 202;
     //token失效
     int ERROR_TOKEN_CODE = 203;
+    //非管理员操作
+    int ERROR_NO_ADMIN_CODE = 204;
 
 
     String MES_REQUEST_SUCCESS = "数据请求成功";
@@ -26,4 +28,5 @@ public interface IReturnCode {
     String MES_NO_IMAGE = "该文章没有图片";
     String MES_ERROR_TOKEN = "token无效";
     String MES_HANDLE_SUCCESS = "操作成功";
+    String MES_NO_ADMIN = "你不是超级管理员，无法操作";
 }

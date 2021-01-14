@@ -1,8 +1,8 @@
 package com.xandone.yblog.controller;
 
 import com.xandone.yblog.common.BaseResult;
-import com.xandone.yblog.common.Config;
 import com.xandone.yblog.common.IReturnCode;
+import com.xandone.yblog.config.Constant;
 import com.xandone.yblog.pojo.BannerBean;
 import com.xandone.yblog.service.BannerService;
 import com.xandone.yblog.utils.IDUtils;
@@ -85,7 +85,7 @@ public class BannerController {
         try {
             String articelId = map.get("articelId");
             String adminId = map.get("adminId");
-            if (!Config.ADMIN_ID.equals(adminId)) {
+            if (!Constant.ADMIN_ID.equals(adminId)) {
                 baseResult.setCode(IReturnCode.ERROR_CODE);
                 baseResult.setMsg("没有权限");
                 return baseResult;

@@ -2,14 +2,13 @@ package com.xandone.yblog.controller;
 
 import com.xandone.yblog.common.BaseObjResult;
 import com.xandone.yblog.common.BaseResult;
-import com.xandone.yblog.common.Config;
 import com.xandone.yblog.common.IReturnCode;
+import com.xandone.yblog.config.Constant;
 import com.xandone.yblog.pojo.*;
 import com.xandone.yblog.service.AdminService;
 import com.xandone.yblog.service.ArticleService;
 import com.xandone.yblog.service.CommentService;
 import com.xandone.yblog.service.EssayService;
-import com.xandone.yblog.utils.JsonUtils;
 import com.xandone.yblog.utils.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -82,7 +81,7 @@ public class AdminController {
         BaseResult baseResult = new BaseResult();
         List<AdminBean> list = new ArrayList<>();
         try {
-            AdminBean userBean = adminService.getAdminById(Config.ADMIN_ID);
+            AdminBean userBean = adminService.getAdminById(Constant.ADMIN_ID);
             list.add(userBean);
             baseResult.setData(list);
             baseResult.setCode(IReturnCode.SUCCESS);
@@ -140,6 +139,11 @@ public class AdminController {
 
         BaseResult baseResult = new BaseResult();
         try {
+            if (!Constant.ADMIN_ID.equals(adminId)) {
+                baseResult.setCode(IReturnCode.ERROR_NO_ADMIN_CODE);
+                baseResult.setMsg(IReturnCode.MES_NO_ADMIN);
+                return baseResult;
+            }
             ProjectLogBean logBean = new ProjectLogBean(time, data);
             adminService.addLog(logBean);
             baseResult.setCode(IReturnCode.SUCCESS);

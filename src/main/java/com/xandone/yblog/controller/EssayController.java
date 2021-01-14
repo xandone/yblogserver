@@ -3,6 +3,7 @@ package com.xandone.yblog.controller;
 import com.xandone.yblog.common.BaseListResult;
 import com.xandone.yblog.common.BaseResult;
 import com.xandone.yblog.common.IReturnCode;
+import com.xandone.yblog.config.Constant;
 import com.xandone.yblog.exception.NoImageException;
 import com.xandone.yblog.pojo.EssayBean;
 import com.xandone.yblog.service.EssayService;
@@ -33,6 +34,11 @@ public class EssayController {
         BaseResult baseResult = new BaseResult();
         EssayBean essayBean;
         try {
+            if (!Constant.ADMIN_ID.equals(map.get("adminId"))) {
+                baseResult.setCode(IReturnCode.ERROR_NO_ADMIN_CODE);
+                baseResult.setMsg(IReturnCode.MES_NO_ADMIN);
+                return baseResult;
+            }
             if (map.get("essayId") == null || TextUtils.isEmpty((String) map.get("essayId"))) {
                 essayBean = essayService.addEssay(map);
             } else {
@@ -106,6 +112,11 @@ public class EssayController {
                                        @RequestParam(value = "jsonEssay") String jsonEssay) {
         BaseResult baseResult = new BaseResult();
         try {
+            if (!Constant.ADMIN_ID.equals(adminId)) {
+                baseResult.setCode(IReturnCode.ERROR_NO_ADMIN_CODE);
+                baseResult.setMsg(IReturnCode.MES_NO_ADMIN);
+                return baseResult;
+            }
             EssayBean essayBean = SimpleUtils.json2Pojo(jsonEssay, EssayBean.class);
             essayService.setEssayAsBanner(essayBean);
             baseResult.setCode(IReturnCode.SUCCESS);

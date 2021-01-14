@@ -2,8 +2,8 @@ package com.xandone.yblog.controller;
 
 import com.xandone.yblog.common.BaseListResult;
 import com.xandone.yblog.common.BaseResult;
-import com.xandone.yblog.common.Config;
 import com.xandone.yblog.common.IReturnCode;
+import com.xandone.yblog.config.Constant;
 import com.xandone.yblog.pojo.CommentBean;
 import com.xandone.yblog.service.CommentService;
 import com.xandone.yblog.utils.IDUtils;
@@ -55,7 +55,7 @@ public class CommetController {
             CommentBean commentBean = new CommentBean();
             commentBean.setCommentId(IDUtils.RandomId());
             commentBean.setArtId(artId);
-            commentBean.setCommentUserId(Config.USER_DEFAULT_ID);
+            commentBean.setCommentUserId(Constant.USER_DEFAULT_ID);
             commentBean.setCommentDetails(details);
             commentBean.setNickname(nickname);
             commentBean.setEmail(email);

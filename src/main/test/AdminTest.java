@@ -85,10 +85,10 @@ public class AdminTest {
         AdminMapper mapper = context.getBean(AdminMapper.class);
 
         AdminBean adminBean = new AdminBean(
-                "admin",
+                "test",
+                "123456",
+                "test账户",
                 "123",
-                "Admin",
-                "250",
                 new Date());
         adminBean.setAdminIcon("http://p1.pstatp.com/large/pgc-image/8f5a9eaea7cb426c895a67e6557eec32");
         adminBean.setTotalArts(0);

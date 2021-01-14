@@ -3,7 +3,7 @@ package com.xandone.yblog.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xandone.yblog.common.BaseListResult;
-import com.xandone.yblog.common.Config;
+import com.xandone.yblog.config.Constant;
 import com.xandone.yblog.mapper.ArticleMapper;
 import com.xandone.yblog.mapper.CommentMapper;
 import com.xandone.yblog.pojo.TypeBean;
@@ -40,7 +40,7 @@ public class ArticleServiceImpl implements ArticleService {
         ArticleBean articleBean = new ArticleBean();
 
         articleBean.setArtId(IDUtils.RandomId());
-        articleBean.setArtUserId(Config.ADMIN_ID);
+        articleBean.setArtUserId(Constant.ADMIN_ID);
         articleBean.setTitle((String) map.get("title"));
         articleBean.setContent((String) map.get("content"));
         articleBean.setContentHtml((String) map.get("contentHtml"));

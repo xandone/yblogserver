@@ -24,4 +24,15 @@ public class Constant {
 
     public static final String BLOG_TYPE_CODE = "code";
     public static final String BLOG_TYPE_ESSAY = "杂文";
+
+
+    /**
+     * 管理员 id
+     */
+    public static final String ADMIN_ID = "250";
+
+    /**
+     * 用户默认ID
+     */
+    public static final String USER_DEFAULT_ID = "0";
 }

@@ -3,6 +3,7 @@ package com.xandone.yblog.controller;
 import com.xandone.yblog.common.BaseListResult;
 import com.xandone.yblog.common.BaseResult;
 import com.xandone.yblog.common.IReturnCode;
+import com.xandone.yblog.config.Constant;
 import com.xandone.yblog.pojo.ArtTypeBean;
 import com.xandone.yblog.pojo.ArticleBean;
 import com.xandone.yblog.service.ArticleService;
@@ -32,6 +33,11 @@ public class ArticleController {
         BaseResult baseResult = new BaseResult();
         ArticleBean articleBean;
         try {
+            if (!Constant.ADMIN_ID.equals(map.get("adminId"))) {
+                baseResult.setCode(IReturnCode.ERROR_NO_ADMIN_CODE);
+                baseResult.setMsg(IReturnCode.MES_NO_ADMIN);
+                return baseResult;
+            }
             if (map.get("artId") == null || TextUtils.isEmpty((String) map.get("artId"))) {
                 articleBean = articleService.addArticle(map);
             } else {

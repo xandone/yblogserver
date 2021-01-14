@@ -3,7 +3,7 @@ package com.xandone.yblog.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xandone.yblog.common.BaseListResult;
-import com.xandone.yblog.common.Config;
+import com.xandone.yblog.config.Constant;
 import com.xandone.yblog.exception.NoImageException;
 import com.xandone.yblog.mapper.BannerMapper;
 import com.xandone.yblog.mapper.CommentMapper;
@@ -41,7 +41,7 @@ public class EssayServiceImpl implements EssayService {
         EssayBean essayBean = new EssayBean();
 
         essayBean.setEssayId(IDUtils.RandomId());
-        essayBean.setEssayUserId(Config.ADMIN_ID);
+        essayBean.setEssayUserId(Constant.ADMIN_ID);
         essayBean.setTitle((String) map.get("title"));
         essayBean.setContent((String) map.get("content"));
         essayBean.setContentHtml((String) map.get("contentHtml"));
