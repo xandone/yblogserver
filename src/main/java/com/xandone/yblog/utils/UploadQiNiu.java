@@ -1,7 +1,7 @@
 package com.xandone.yblog.utils;
 
 import com.qiniu.util.Auth;
-import com.xandone.yblog.common.Config;
+import com.xandone.yblog.config.Config;
 
 /**
  * @author ：xandone
