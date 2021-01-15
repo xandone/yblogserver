@@ -1,5 +1,6 @@
 package com.xandone.yblog.controller;
 
+import com.xandone.yblog.common.BaseListResult;
 import com.xandone.yblog.common.BaseObjResult;
 import com.xandone.yblog.common.BaseResult;
 import com.xandone.yblog.common.IReturnCode;
@@ -150,6 +151,28 @@ public class AdminController {
             baseResult.setMsg(IReturnCode.MES_HANDLE_SUCCESS);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        return baseResult;
+    }
+
+
+    @RequestMapping(value = "/adminlist")
+    @ResponseBody
+    public BaseListResult getAllAdmins(@RequestParam(value = "adminId") String adminId) {
+        BaseListResult baseResult = new BaseListResult();
+        try {
+            List<AdminBean> list = adminService.getAllAdmins();
+            baseResult.setData(list);
+            if (list != null) {
+                baseResult.setCode(IReturnCode.SUCCESS);
+                baseResult.setMsg(IReturnCode.MES_REQUEST_SUCCESS);
+                return baseResult;
+            }
+            baseResult.setCode(IReturnCode.ERROR_CODE);
+        } catch (Exception e) {
+            e.printStackTrace();
+            baseResult.setCode(IReturnCode.ERROR_CODE);
+            baseResult.setMsg(IReturnCode.MES_SERVER_ERROR);
         }
         return baseResult;
     }

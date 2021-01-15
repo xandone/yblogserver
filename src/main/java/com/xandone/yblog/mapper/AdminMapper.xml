@@ -11,6 +11,7 @@
         <result column="admin_id" property="adminId" jdbcType="VARCHAR"/>
         <result column="admin_icon" property="adminIcon" jdbcType="VARCHAR"/>
         <result column="permission" property="permission" jdbcType="VARCHAR"/>
+        <result column="identity" property="identity" jdbcType="VARCHAR"/>
         <result column="regist_time" property="registTime" jdbcType="TIMESTAMP"/>
         <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP"/>
         <result column="admin_icon" property="adminIcon" jdbcType="VARCHAR"/>
@@ -25,8 +26,8 @@
 
     <insert id="addAdmin" parameterType="com.xandone.yblog.pojo.AdminBean">
         insert into y_admin
-        (name,password,nickname,admin_id,regist_time,total_arts,email) values
-        (#{name},#{password},#{nickname},#{adminId},#{registTime},#{totalArts},#{email})
+        (name,password,nickname,admin_id,regist_time,total_arts,email,identity) values
+        (#{name},#{password},#{nickname},#{adminId},#{registTime},#{totalArts},#{email},#{identity})
     </insert>
 
     <select id="getAdminByName" parameterType="java.lang.String"
@@ -43,6 +44,7 @@
             <if test="adminId != null">admin_id = #{adminId,jdbcType=VARCHAR},</if>
             <if test="adminIcon != null">admin_icon = #{adminIcon,jdbcType=VARCHAR},</if>
             <if test="permission != null">permission = #{permission,jdbcType=VARCHAR},</if>
+            <if test="identity != null">identity = #{identity,jdbcType=VARCHAR},</if>
             <if test="registTime != null">regist_time = #{registTime,jdbcType=TIMESTAMP},</if>
             <if test="lastLoginTime != null">last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},</if>
             <if test="totalArts != null">total_arts = #{totalArts,jdbcType=INTEGER},</if>
@@ -101,6 +103,10 @@
     <select id="getLogs" resultMap="projectBean">
         select * from y_project_log order by
         id desc
+    </select>
+
+    <select id="getAllAdmins" resultMap="adminBean">
+        select * from y_admin
     </select>
 
 </mapper>

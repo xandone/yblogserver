@@ -80,4 +80,9 @@ public class AdminServiceIml implements AdminService {
         return logsBeans;
     }
 
+    @Override
+    public List<AdminBean> getAllAdmins() throws Exception {
+        return adminMapper.getAllAdmins();
+    }
+
 }

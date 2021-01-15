@@ -26,4 +26,6 @@ public interface AdminMapper {
     void addLog(ProjectLogBean bean);
 
     List<ProjectLogBean> getLogs();
+
+    List<AdminBean> getAllAdmins();
 }

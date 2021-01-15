@@ -23,6 +23,7 @@ public class AdminBean {
     private Date registTime;
     private Date lastLoginTime;
     private String token;
+    private String identity;
 
     public AdminBean() {
 
@@ -140,6 +141,14 @@ public class AdminBean {
 
     public void setEssayCounts(int essayCounts) {
         this.essayCounts = essayCounts;
+    }
+
+    public String getIdentity() {
+        return identity;
+    }
+
+    public void setIdentity(String identity) {
+        this.identity = identity;
     }
 
     @Override

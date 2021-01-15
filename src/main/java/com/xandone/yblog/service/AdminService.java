@@ -27,4 +27,6 @@ public interface AdminService {
 
     List<LogsBean> getLogs() throws Exception;
 
+    List<AdminBean> getAllAdmins() throws Exception;
+
 }
