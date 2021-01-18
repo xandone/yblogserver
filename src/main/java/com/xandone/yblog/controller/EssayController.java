@@ -59,7 +59,6 @@ public class EssayController {
         return baseResult;
     }
 
-
     @RequestMapping(value = "/essaylist")
     @ResponseBody
     public BaseListResult getAllJoke(@RequestParam(value = "page") Integer page,

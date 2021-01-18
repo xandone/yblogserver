@@ -16,4 +16,10 @@ public class Config {
      */
     public static final String CONST_BUCKET_NAME = "";
 
+
+    /**
+     * apk的名称
+     */
+    public static final String ANDROID_APK_NAME = "yblogapp";
+
 }

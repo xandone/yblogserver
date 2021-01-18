@@ -36,8 +36,8 @@
          <!-- 请求编码格式 -->  
          <property name="defaultEncoding" value="utf-8"/>
          <!-- 上传文件大小(单位:字节) -->  
-         <property name="maxUploadSize" value="50000000"/>
+         <property name="maxUploadSize" value="104857600"/>
          <!-- 缓冲区大小(单位:KB) -->  
-         <property name="maxInMemorySize" value="1024"/>
+         <property name="maxInMemorySize" value="2048"/>
     </bean>
 </beans>

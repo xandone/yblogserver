@@ -93,3 +93,14 @@ createTime VARCHAR(100),
 logTip VARCHAR(500),
 PRIMARY KEY (id)
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+## apk表
+create table y_apk_version(
+id int(11) unsigned not null auto_increment,
+versionCode varchar(10) not null,
+versionName varchar(10) not null,
+versionTip varchar(500) not null,
+postTime datetime not null,
+isForce tinyint(1) DEFAULT 0,
+primary key (id)
+)ENGINE=InnoDB DEFAULT CHARSET=UTF8;

@@ -150,4 +150,11 @@ public class AdminTest {
         List<ProjectLogBean> logBeans = mapper.getLogs();
         System.out.println(JsonUtils.obj2Json(logBeans));
     }
+
+    @Test
+    public void addApk() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
+        ApkMapper mapper = context.getBean(ApkMapper.class);
+        mapper.addApk(new ApkBean("1", "2", "3", 1, new Date()));
+    }
 }

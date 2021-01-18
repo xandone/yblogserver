@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xandone.yblog.mapper.ApkMapper">
+    <resultMap id="BaseResultMap" type="com.xandone.yblog.pojo.ApkBean">
+        <result column="versionCode" property="versionCode" jdbcType="VARCHAR"/>
+        <result column="versionName" property="versionName" jdbcType="VARCHAR"/>
+        <result column="versionTip" property="versionTip" jdbcType="VARCHAR"/>
+        <result column="postTime" property="postTime" jdbcType="TIMESTAMP"/>
+        <result column="isForce" property="isForce" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <insert id="addApk" parameterType="com.xandone.yblog.pojo.ApkBean">
+        insert into y_apk_version
+        (versionCode,
+        versionName,
+        versionTip,
+        postTime,
+        isForce
+        ) values
+        (#{versionCode},
+        #{versionName},
+        #{versionTip},
+        #{postTime},
+        #{isForce}
+        )
+    </insert>
+
+    <select id="getApkList" resultMap="BaseResultMap">
+        select * from y_apk_version order by
+        id desc
+    </select>
+
+    <select id="getApkLatest" resultMap="BaseResultMap">
+        select * from y_apk_version order by id desc limit 0,1
+    </select>
+
+
+</mapper>
