@@ -4,6 +4,7 @@ import com.xandone.yblog.common.BaseListResult;
 import com.xandone.yblog.common.BaseResult;
 import com.xandone.yblog.common.IReturnCode;
 import com.xandone.yblog.config.Config;
+import com.xandone.yblog.config.Constant;
 import com.xandone.yblog.pojo.ApkBean;
 import com.xandone.yblog.service.ApkService;
 import org.apache.commons.io.FilenameUtils;
@@ -38,8 +39,14 @@ public class ApkController {
                                    @RequestParam(value = "codeName") String codeName,
                                    @RequestParam(value = "versionName") String versionName,
                                    @RequestParam(value = "versionTip") String versionTip,
-                                   @RequestParam(value = "isForce") Integer isForce) {
+                                   @RequestParam(value = "isForce") Integer isForce,
+                                   @RequestParam(value = "adminId") String adminId) {
         BaseResult baseResult = new BaseResult();
+        if (!Constant.ADMIN_ID.equals(adminId)) {
+            baseResult.setCode(IReturnCode.ERROR_NO_ADMIN_CODE);
+            baseResult.setMsg(IReturnCode.MES_NO_ADMIN);
+            return baseResult;
+        }
         try {
             apkService.addApk(new ApkBean(codeName, versionName, versionTip, isForce, new Date()));
             //设置一下保存的路径
@@ -72,7 +79,7 @@ public class ApkController {
             String filePath = request.getSession().getServletContext().getRealPath("apkUpload");
             String versionName = apkService.getApkLatest().getVersionName();
             String fileName = Config.ANDROID_APK_NAME + "_v" + versionName + ".apk";
-            System.out.println("fileName=" + fileName);
+            System.out.println("fileName=" + filePath + File.separator + fileName);
             //获取输入流
             bis = new BufferedInputStream(new FileInputStream(new File(filePath, fileName)));
             //设置文件下载头
@@ -83,11 +90,17 @@ public class ApkController {
             int len;
             while ((len = bis.read()) != -1) {
                 out.write(len);
-                out.flush();
             }
-            out.close();
+            out.flush();
         } catch (Exception e) {
             e.printStackTrace();
+            if (bis != null) {
+                bis.close();
+            }
+            if (out != null) {
+                out.close();
+            }
+        } finally {
             if (bis != null) {
                 bis.close();
             }
