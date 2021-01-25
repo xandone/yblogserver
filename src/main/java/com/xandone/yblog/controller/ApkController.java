@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -131,4 +132,27 @@ public class ApkController {
         return baseResult;
     }
 
+    @RequestMapping(value = "/apkInfo")
+    @ResponseBody
+    public BaseListResult getLastApk() {
+        BaseListResult baseResult = new BaseListResult();
+        try {
+            List<ApkBean> list = new ArrayList<>();
+            ApkBean apkBean = apkService.getApkLatest();
+            if (apkBean != null) {
+                list.add(apkBean);
+                baseResult.setData(list);
+                baseResult.setCode(IReturnCode.SUCCESS);
+                baseResult.setMsg(IReturnCode.MES_REQUEST_SUCCESS);
+                return baseResult;
+            }
+            baseResult.setCode(IReturnCode.ERROR_CODE);
+            baseResult.setMsg(IReturnCode.MES_SERVER_ERROR);
+        } catch (Exception e) {
+            e.printStackTrace();
+            baseResult.setCode(IReturnCode.ERROR_CODE);
+            baseResult.setMsg(IReturnCode.MES_SERVER_ERROR);
+        }
+        return baseResult;
+    }
 }
