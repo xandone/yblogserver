@@ -82,11 +82,13 @@ public class ApkController {
             String fileName = Config.ANDROID_APK_NAME + "_v" + versionName + ".apk";
             System.out.println("fileName=" + filePath + File.separator + fileName);
             //获取输入流
-            bis = new BufferedInputStream(new FileInputStream(new File(filePath, fileName)));
+            File apkfile = new File(filePath, fileName);
+            bis = new BufferedInputStream(new FileInputStream(apkfile));
             //设置文件下载头
             response.addHeader("Content-Disposition", "attachment;filename=" + fileName);
             //1.设置文件ContentType类型，这样设置，会自动判断下载文件类型
             response.setContentType("multipart/form-data");
+            response.setHeader("Content-Length", String.valueOf(apkfile.length()));
             out = new BufferedOutputStream(response.getOutputStream());
             int len;
             while ((len = bis.read()) != -1) {
