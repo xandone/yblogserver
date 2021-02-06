@@ -49,7 +49,7 @@ public class ApkController {
             return baseResult;
         }
         try {
-            apkService.addApk(new ApkBean(codeName, versionName, versionTip, isForce, new Date()));
+            apkService.addApk(new ApkBean(codeName, versionName, versionTip, isForce == 1, new Date()));
             //设置一下保存的路径
             String pathApk = request.getSession().getServletContext().getRealPath("apkUpload");
             File dir = new File(pathApk);

@@ -116,6 +116,7 @@ public class EssayController {
                 baseResult.setMsg(IReturnCode.MES_NO_ADMIN);
                 return baseResult;
             }
+            System.out.println(jsonEssay);
             EssayBean essayBean = SimpleUtils.json2Pojo(jsonEssay, EssayBean.class);
             essayService.setEssayAsBanner(essayBean);
             baseResult.setCode(IReturnCode.SUCCESS);
@@ -132,5 +133,6 @@ public class EssayController {
         }
         return baseResult;
     }
+
 
 }

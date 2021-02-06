@@ -155,6 +155,6 @@ public class AdminTest {
     public void addApk() {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
         ApkMapper mapper = context.getBean(ApkMapper.class);
-        mapper.addApk(new ApkBean("1", "2", "3", 1, new Date()));
+        mapper.addApk(new ApkBean("3", "1.0.3", "帝国时代发送到", false, new Date()));
     }
 }

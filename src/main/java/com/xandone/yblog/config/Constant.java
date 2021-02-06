@@ -35,4 +35,11 @@ public class Constant {
      * 用户默认ID
      */
     public static final String USER_DEFAULT_ID = "0";
+
+
+    /**
+     * apk下载地址
+     */
+    public static final String DOANLOAD_APK_URL = "http://xandone.pub/yblog/apk/apkdown";
+
 }

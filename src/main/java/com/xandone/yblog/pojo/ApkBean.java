@@ -1,6 +1,7 @@
 package com.xandone.yblog.pojo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.xandone.yblog.config.Constant;
 
 import java.util.Date;
 
@@ -15,12 +16,13 @@ public class ApkBean {
     private String versionName;
     private String versionTip;
     private Date postTime;
-    private int isForce;
+    private boolean isForce;
+    private String apkUrl = Constant.DOANLOAD_APK_URL;
 
     public ApkBean() {
     }
 
-    public ApkBean(String versionCode, String versionName, String versionTip, int isForce, Date postTime) {
+    public ApkBean(String versionCode, String versionName, String versionTip, boolean isForce, Date postTime) {
         this.versionCode = versionCode;
         this.versionName = versionName;
         this.versionTip = versionTip;
@@ -69,11 +71,19 @@ public class ApkBean {
         this.postTime = postTime;
     }
 
-    public int getIsForce() {
+    public boolean isForce() {
         return isForce;
     }
 
-    public void setIsForce(int isForce) {
-        this.isForce = isForce;
+    public void setForce(boolean force) {
+        isForce = force;
+    }
+
+    public String getApkUrl() {
+        return apkUrl;
+    }
+
+    public void setApkUrl(String apkUrl) {
+        this.apkUrl = apkUrl;
     }
 }
