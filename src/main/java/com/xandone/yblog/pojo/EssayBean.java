@@ -1,6 +1,7 @@
 package com.xandone.yblog.pojo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.Date;
 
@@ -9,6 +10,7 @@ import java.util.Date;
  * created on  ：2019/11/22 14:51
  * description：
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class EssayBean {
     private String essayId;
     private String essayUserId;
@@ -104,11 +106,11 @@ public class EssayBean {
         this.essayBrowseCount = essayBrowseCount;
     }
 
-    public boolean isTopping() {
+    public boolean getIsTopping() {
         return isTopping;
     }
 
-    public void setTopping(boolean topping) {
+    public void setIsTopping(boolean topping) {
         isTopping = topping;
     }
 }

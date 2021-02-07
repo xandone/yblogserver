@@ -103,7 +103,7 @@ public class EssayServiceImpl implements EssayService {
 
     @Override
     public void setEssayAsBanner(EssayBean essayBean) throws Exception {
-        if (!essayBean.isTopping()) {
+        if (!essayBean.getIsTopping()) {
             essayMapper.editEssay(essayBean);
             bannerMapper.deleteBannerById(essayBean.getEssayId());
             return;
