@@ -27,4 +27,6 @@ public interface ArticleService {
     ArticleBean editArticle(Map<String, Object> map) throws Exception;
 
     TypeBean getAllArtCount() throws Exception;
+
+    List<ArticleBean> getAllArts() throws Exception;
 }

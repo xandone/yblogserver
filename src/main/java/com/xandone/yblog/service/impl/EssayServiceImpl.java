@@ -131,6 +131,11 @@ public class EssayServiceImpl implements EssayService {
         return new TypeBean("杂文", essayMapper.getAllEssayCount());
     }
 
+    @Override
+    public List<EssayBean> getAllEssays() throws Exception {
+        return essayMapper.getEssayList();
+    }
+
     private EssayBean dealComment(EssayBean bean) throws Exception {
         List<CommentBean> commentBeans = commentMapper.getAllArtCommentById(bean.getEssayId());
         if (commentBeans != null) {

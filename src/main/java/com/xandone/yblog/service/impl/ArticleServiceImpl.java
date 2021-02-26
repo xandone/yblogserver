@@ -124,6 +124,11 @@ public class ArticleServiceImpl implements ArticleService {
         return new TypeBean("编程", articleMapper.getAllArtCount());
     }
 
+    @Override
+    public List<ArticleBean> getAllArts() throws Exception {
+        return articleMapper.getArticleList();
+    }
+
     private ArticleBean dealComment(ArticleBean bean) throws Exception {
         List<CommentBean> commentBeans = commentMapper.getAllArtCommentById(bean.getArtId());
         if (commentBeans != null) {

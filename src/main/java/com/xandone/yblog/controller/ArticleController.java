@@ -4,15 +4,20 @@ import com.xandone.yblog.common.BaseListResult;
 import com.xandone.yblog.common.BaseResult;
 import com.xandone.yblog.common.IReturnCode;
 import com.xandone.yblog.config.Constant;
+import com.xandone.yblog.pojo.ArchiveBean;
 import com.xandone.yblog.pojo.ArtTypeBean;
 import com.xandone.yblog.pojo.ArticleBean;
+import com.xandone.yblog.pojo.EssayBean;
 import com.xandone.yblog.service.ArticleService;
+import com.xandone.yblog.service.EssayService;
+import com.xandone.yblog.utils.ComparatorDate;
 import org.apache.http.util.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +31,8 @@ import java.util.Map;
 public class ArticleController {
     @Autowired
     ArticleService articleService;
+    @Autowired
+    EssayService essayService;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
@@ -61,9 +68,9 @@ public class ArticleController {
 
     @RequestMapping(value = "/artlist")
     @ResponseBody
-    public BaseListResult getAllArt(@RequestParam(value = "page") Integer page,
-                                    @RequestParam(value = "row") Integer row,
-                                    Integer type) {
+    public BaseListResult getArticleList(@RequestParam(value = "page") Integer page,
+                                         @RequestParam(value = "row") Integer row,
+                                         Integer type) {
         BaseListResult baseResult = new BaseListResult();
         try {
             BaseListResult result = articleService.getArticleList(page, row, type);
@@ -112,6 +119,44 @@ public class ArticleController {
         try {
             List<ArtTypeBean> list = articleService.getArtCountAllType();
             baseResult.setData(list);
+            baseResult.setCode(IReturnCode.SUCCESS);
+            baseResult.setMsg(IReturnCode.MES_REQUEST_SUCCESS);
+            return baseResult;
+        } catch (Exception e) {
+            e.printStackTrace();
+            baseResult.setCode(IReturnCode.ERROR_CODE);
+            baseResult.setMsg(IReturnCode.MES_SERVER_ERROR);
+        }
+        return baseResult;
+    }
+
+
+    @RequestMapping(value = "/archivelist")
+    @ResponseBody
+    public BaseListResult getArchiveList(@RequestParam(value = "page") Integer page,
+                                         @RequestParam(value = "row") Integer row) {
+        BaseListResult baseResult = new BaseListResult();
+        try {
+            List<ArticleBean> allArts = articleService.getAllArts();
+            List<EssayBean> essays = essayService.getAllEssays();
+            List<ArchiveBean> list = new ArrayList<>();
+            for (ArticleBean articleBean : allArts) {
+                list.add(ArchiveBean.createArchvieByArt(articleBean));
+            }
+            for (EssayBean essayBean : essays) {
+                list.add(ArchiveBean.createArchvieByEssay(essayBean));
+            }
+            Collections.sort(list, new ComparatorDate());
+            int total = list.size();
+            int start = (page - 1) * row;
+            int end = page * row;
+            if (start > total - 1) {
+                baseResult.setData(new ArrayList<>());
+                baseResult.setTotal(0);
+            } else {
+                baseResult.setData(list.subList(start, end > total - 1 ? total - 1 : end));
+                baseResult.setTotal(total);
+            }
             baseResult.setCode(IReturnCode.SUCCESS);
             baseResult.setMsg(IReturnCode.MES_REQUEST_SUCCESS);
             return baseResult;

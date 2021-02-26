@@ -4,6 +4,7 @@ import com.xandone.yblog.common.BaseListResult;
 import com.xandone.yblog.pojo.TypeBean;
 import com.xandone.yblog.pojo.EssayBean;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,4 +26,6 @@ public interface EssayService {
     void setEssayAsBanner(EssayBean essayBean) throws Exception;
 
     TypeBean getAllEssayCount() throws Exception;
+
+    List<EssayBean> getAllEssays() throws Exception;
 }
