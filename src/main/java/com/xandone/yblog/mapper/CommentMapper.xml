@@ -27,6 +27,7 @@
         email,
         visitor_url,
         comment_user_ver,
+        ip,
         comment_date)
         values(
         #{commentId},
@@ -37,6 +38,7 @@
         #{email},
         #{visitorUrl},
         #{commentUserVer},
+        #{ip},
         #{commentDate})
     </insert>
 

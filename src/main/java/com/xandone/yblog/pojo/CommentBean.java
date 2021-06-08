@@ -19,6 +19,7 @@ public class CommentBean {
     private String visitorUrl;
     private String commentUserVer;
     private Date commentDate;
+    private String ip;
 
     private String commentNick;
     private String commentIcon;
@@ -110,5 +111,13 @@ public class CommentBean {
 
     public void setVisitorUrl(String visitorUrl) {
         this.visitorUrl = visitorUrl;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
     }
 }

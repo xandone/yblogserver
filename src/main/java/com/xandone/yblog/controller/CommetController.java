@@ -7,6 +7,7 @@ import com.xandone.yblog.config.Constant;
 import com.xandone.yblog.pojo.CommentBean;
 import com.xandone.yblog.service.CommentService;
 import com.xandone.yblog.utils.IDUtils;
+import com.xandone.yblog.utils.SimpleUtils;
 import org.apache.http.util.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,7 +44,7 @@ public class CommetController {
                                  String commentUserVer) {
         BaseResult baseResult = new BaseResult();
         try {
-            String remoteAddr = req.getRemoteAddr();
+            String remoteAddr = SimpleUtils.getIPAddress(req);
             System.out.println(remoteAddr);
 
             List<CommentBean> dataList = new ArrayList<>();
@@ -62,6 +63,7 @@ public class CommetController {
             commentBean.setVisitorUrl(visitorUrl);
             commentBean.setCommentUserVer(TextUtils.isEmpty(commentUserVer) ? "未知" : commentUserVer);
             commentBean.setCommentDate(new Date());
+            commentBean.setIp(remoteAddr);
 
             commentService.addComment(commentBean);
             baseResult.setCode(IReturnCode.SUCCESS);
