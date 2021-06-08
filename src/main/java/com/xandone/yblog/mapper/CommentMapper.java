@@ -1,6 +1,7 @@
 package com.xandone.yblog.mapper;
 
 import com.xandone.yblog.pojo.CommentBean;
+import com.xandone.yblog.pojo.CommentBeanHide;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
  * description：
  */
 public interface CommentMapper {
-    void addComment(CommentBean commentBean);
+    void addComment(CommentBeanHide commentBean);
 
     List<CommentBean> getAllArtCommentById(String artId);
 

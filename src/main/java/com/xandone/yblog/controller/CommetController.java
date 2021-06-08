@@ -5,6 +5,7 @@ import com.xandone.yblog.common.BaseResult;
 import com.xandone.yblog.common.IReturnCode;
 import com.xandone.yblog.config.Constant;
 import com.xandone.yblog.pojo.CommentBean;
+import com.xandone.yblog.pojo.CommentBeanHide;
 import com.xandone.yblog.service.CommentService;
 import com.xandone.yblog.utils.IDUtils;
 import com.xandone.yblog.utils.SimpleUtils;
@@ -47,13 +48,13 @@ public class CommetController {
             String remoteAddr = SimpleUtils.getIPAddress(req);
             System.out.println(remoteAddr);
 
-            List<CommentBean> dataList = new ArrayList<>();
+            List<CommentBeanHide> dataList = new ArrayList<>();
 
 //            if (TextUtils.isEmpty(userId)) {
 //                baseResult.setCode(IReturnCode.ERROR_CODE);
 //                return baseResult;
 //            }
-            CommentBean commentBean = new CommentBean();
+            CommentBeanHide commentBean = new CommentBeanHide();
             commentBean.setCommentId(IDUtils.RandomId());
             commentBean.setArtId(artId);
             commentBean.setCommentUserId(Constant.USER_DEFAULT_ID);

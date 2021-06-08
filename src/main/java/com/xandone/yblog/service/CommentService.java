@@ -2,6 +2,7 @@ package com.xandone.yblog.service;
 
 import com.xandone.yblog.common.BaseListResult;
 import com.xandone.yblog.pojo.CommentBean;
+import com.xandone.yblog.pojo.CommentBeanHide;
 
 
 /**
@@ -10,7 +11,7 @@ import com.xandone.yblog.pojo.CommentBean;
  * description：
  */
 public interface CommentService {
-    void addComment(CommentBean commentBean) throws Exception;
+    void addComment(CommentBeanHide commentBean) throws Exception;
 
     BaseListResult getAllArtCommentById(Integer page, Integer row, String artId) throws Exception;
 

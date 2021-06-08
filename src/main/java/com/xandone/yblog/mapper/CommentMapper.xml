@@ -16,7 +16,7 @@
         <result column="comment_date" property="commentDate" jdbcType="TIMESTAMP"/>
     </resultMap>
 
-    <insert id="addComment" parameterType="com.xandone.yblog.pojo.CommentBean">
+    <insert id="addComment" parameterType="com.xandone.yblog.pojo.CommentBeanHide">
         insert into
         y_art_comment(
         comment_id,

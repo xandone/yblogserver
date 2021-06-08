@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.xandone.yblog.common.BaseListResult;
 import com.xandone.yblog.mapper.CommentMapper;
 import com.xandone.yblog.pojo.CommentBean;
+import com.xandone.yblog.pojo.CommentBeanHide;
 import com.xandone.yblog.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ public class CommentServiceImpl implements CommentService {
     CommentMapper commentMapper;
 
     @Override
-    public void addComment(CommentBean commentBean) throws Exception {
+    public void addComment(CommentBeanHide commentBean) throws Exception {
         commentMapper.addComment(commentBean);
     }
 

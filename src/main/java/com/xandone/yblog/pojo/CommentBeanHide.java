@@ -7,9 +7,9 @@ import java.util.Date;
 /**
  * @author ：xandone
  * created on  ：2019/11/29 10:03
- * description：
+ * description：带ip
  */
-public class CommentBean {
+public class CommentBeanHide {
     private String commentId;
     private String artId;
     private String commentUserId;
@@ -19,6 +19,7 @@ public class CommentBean {
     private String visitorUrl;
     private String commentUserVer;
     private Date commentDate;
+    private String ip;
 
     private String commentNick;
     private String commentIcon;
@@ -112,4 +113,11 @@ public class CommentBean {
         this.visitorUrl = visitorUrl;
     }
 
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
 }

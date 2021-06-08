@@ -52,7 +52,7 @@ public class AdminTest {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
         CommentMapper mapper = context.getBean(CommentMapper.class);
 
-        CommentBean commentBean = new CommentBean();
+        CommentBeanHide commentBean = new CommentBeanHide();
         commentBean.setCommentId(IDUtils.RandomId());
         commentBean.setArtId("157483426134816");
         commentBean.setCommentUserId("0");
