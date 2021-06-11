@@ -57,6 +57,8 @@ art_id varchar(18),
 comment_user_id varchar(18),
 comment_details mediumtext,
 comment_date datetime DEFAULT NULL,
+comment_icon varchar(255) DEFAULT NULL,
+ip varchar(30) DEFAULT NULL,
 primary key (id)
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 

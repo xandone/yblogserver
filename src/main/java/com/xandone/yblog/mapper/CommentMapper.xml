@@ -11,6 +11,7 @@
         <result column="comment_details" property="commentDetails" jdbcType="VARCHAR"/>
         <result column="nickname" property="nickname" jdbcType="VARCHAR"/>
         <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="comment_icon" property="commentIcon" jdbcType="VARCHAR"/>
         <result column="visitor_url" property="visitorUrl" jdbcType="VARCHAR"/>
         <result column="comment_user_ver" property="commentUserVer" jdbcType="VARCHAR"/>
         <result column="comment_date" property="commentDate" jdbcType="TIMESTAMP"/>
