@@ -157,4 +157,18 @@ public class AdminTest {
         ApkMapper mapper = context.getBean(ApkMapper.class);
         mapper.addApk(new ApkBean("3", "1.0.3", "帝国时代发送到", false, new Date()));
     }
+
+    @Test
+    public void addPhotoCover() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
+        PhotoMapper mapper = context.getBean(PhotoMapper.class);
+        mapper.addPhotoCover(new PhotoCoverBean("影视海报", "http://www.xandone.pub/FiF_SMCgQk8QoMJBcAQADFA7oHS3", new Date()));
+    }
+
+    @Test
+    public void addPhotoList() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
+        PhotoMapper mapper = context.getBean(PhotoMapper.class);
+        mapper.addPhotoById(new PhotoBean(1, "影视海报", "http://www.xandone.pub/FiF_SMCgQk8QoMJBcAQADFA7oHS3", new Date()));
+    }
 }

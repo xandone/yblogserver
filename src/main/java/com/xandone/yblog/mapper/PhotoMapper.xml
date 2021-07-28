@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xandone.yblog.mapper.PhotoMapper">
+    <resultMap id="photoCovers" type="com.xandone.yblog.pojo.PhotoCoverBean">
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="url" property="url" jdbcType="VARCHAR"/>
+        <result column="count" property="count" jdbcType="INTEGER"/>
+        <result column="postTime" property="postTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <resultMap id="photos" type="com.xandone.yblog.pojo.PhotoBean">
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="url" property="url" jdbcType="VARCHAR"/>
+        <result column="count" property="count" jdbcType="INTEGER"/>
+        <result column="postTime" property="postTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <insert id="addPhotoCover" parameterType="com.xandone.yblog.pojo.PhotoCoverBean">
+        insert into y_photo_cover
+        (title,
+        url,
+        postTime
+        ) values
+        (#{title},
+        #{url},
+        #{postTime}
+        )
+    </insert>
+
+    <select id="getPhotoCoverList" resultMap="photoCovers">
+        select * from y_photo_cover
+    </select>
+
+    <insert id="addPhotoById" parameterType="com.xandone.yblog.pojo.PhotoBean">
+        insert into y_photo_list
+        (albumId,
+        title,
+        url,
+        postTime
+        ) values
+        (#{albumId},
+        #{title},
+        #{url},
+        #{postTime}
+        )
+    </insert>
+
+    <select id="getPhotoListById" resultMap="photos">
+        select * from y_photo_list where albumId = #{albumId}
+    </select>
+
+    <select id="getPhotoCountById" resultType="java.lang.Integer">
+        select count(*) from y_photo_list where albumId = #{albumId}
+    </select>
+
+</mapper>
