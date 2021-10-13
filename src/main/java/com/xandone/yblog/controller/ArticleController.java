@@ -154,7 +154,7 @@ public class ArticleController {
                 baseResult.setData(new ArrayList<>());
                 baseResult.setTotal(0);
             } else {
-                baseResult.setData(list.subList(start, end > total - 1 ? total - 1 : end));
+                baseResult.setData(list.subList(start, end > total ? total : end));
                 baseResult.setTotal(total);
             }
             baseResult.setCode(IReturnCode.SUCCESS);
