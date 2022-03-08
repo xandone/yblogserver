@@ -16,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -167,5 +169,30 @@ public class ArticleController {
         }
         return baseResult;
     }
+
+    @RequestMapping(value = "/artlist/search")
+    @ResponseBody
+    public BaseListResult searchJokeList(@RequestParam(value = "page") Integer page,
+                                         @RequestParam(value = "row") Integer row,
+                                         String key) {
+        BaseListResult baseResult = new BaseListResult();
+        try {
+            System.out.println("key=" + URLDecoder.decode(key, "UTF-8"));
+            ArticleBean articleBean = new ArticleBean(URLDecoder.decode(key, "UTF-8"));
+            BaseListResult result = articleService.searchArtList(page, row, articleBean);
+            if (result != null) {
+                result.setCode(IReturnCode.SUCCESS);
+                result.setMsg(IReturnCode.MES_REQUEST_SUCCESS);
+                return result;
+            }
+            baseResult.setCode(IReturnCode.ERROR_CODE);
+        } catch (Exception e) {
+            e.printStackTrace();
+            baseResult.setCode(IReturnCode.ERROR_CODE);
+            baseResult.setMsg(IReturnCode.MES_SERVER_ERROR);
+        }
+        return baseResult;
+    }
+
 
 }

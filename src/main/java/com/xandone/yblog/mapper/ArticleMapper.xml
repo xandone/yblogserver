@@ -91,4 +91,21 @@
         where art_id = #{artId}
     </update>
 
+    <select id="searchArtList" parameterType="com.xandone.yblog.pojo.ArticleBean" resultMap="BaseResultMap">
+        select * from y_article
+        <where>
+            <if test="title!=null">
+                title like concat('%',#{title},'%')
+            </if>
+            <!--<if test="type!=null and type!='-1'">-->
+                <!--and type =#{type}-->
+            <!--</if>-->
+            <!--<if test="artId!=null">-->
+                <!--and art_id=#{artId}-->
+            <!--</if>-->
+        </where>
+        order by id desc
+
+    </select>
+
 </mapper>

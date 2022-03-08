@@ -22,6 +22,13 @@ public class ArticleBean {
     private String content;
     private String contentHtml;
 
+    public ArticleBean() {
+    }
+
+    public ArticleBean(String title) {
+        this.title = title;
+    }
+
     public String getArtId() {
         return artId;
     }

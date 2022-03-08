@@ -25,4 +25,6 @@ public interface ArticleMapper {
     void editArticle(ArticleBean articleBean);
 
     int getAllArtCount();
+
+    List<ArticleBean> searchArtList(ArticleBean articleBean);
 }

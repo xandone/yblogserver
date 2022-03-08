@@ -129,6 +129,20 @@ public class ArticleServiceImpl implements ArticleService {
         return articleMapper.getArticleList();
     }
 
+    @Override
+    public BaseListResult searchArtList(Integer page, Integer row, ArticleBean articleBean) throws Exception {
+        BaseListResult base = new BaseListResult();
+        PageHelper.startPage(page, row);
+        List<ArticleBean> list = articleMapper.searchArtList(articleBean);
+        int total = (int) new PageInfo<>(list).getTotal();
+        for (ArticleBean bean : list) {
+            dealComment(bean);
+        }
+        base.setData(list);
+        base.setTotal(total);
+        return base;
+    }
+
     private ArticleBean dealComment(ArticleBean bean) throws Exception {
         List<CommentBean> commentBeans = commentMapper.getAllArtCommentById(bean.getArtId());
         if (commentBeans != null) {

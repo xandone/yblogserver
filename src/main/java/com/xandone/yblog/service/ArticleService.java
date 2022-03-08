@@ -29,4 +29,6 @@ public interface ArticleService {
     TypeBean getAllArtCount() throws Exception;
 
     List<ArticleBean> getAllArts() throws Exception;
+
+    BaseListResult searchArtList(Integer page, Integer row, ArticleBean articleBean) throws Exception;
 }
